@@ -22,7 +22,7 @@
 			$sucesso = $usuDAO->Registrar($registro);
 			
 			if($sucesso){
-				header("Location: paginainicial.php");
+				header("Location: index.php");
 			}
 			else{
 				header("Location: index.php?erro=". $usuDAO->Mensagem);

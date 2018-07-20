@@ -28,7 +28,7 @@
 		<input type="submit" class="btn" value="Criar Conta"/>
 		<a onClick="$('#login').fadeIn(); $('#registrar').hide();">Já tenho uma conta</a>	
 	</form>
-	<p id="credits">&copy; Free Mouth, <?php echo date("Y");?>, Todos os direitos reservados.</p>
+	<p id="credits">&copy; Mouth Off, <?php date_default_timezone_set('America/Sao_Paulo'); echo date("Y");?>, Todos os direitos reservados.</p>
 	
 </body>
 </html>
