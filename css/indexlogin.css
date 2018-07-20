@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin: 0;
+	font-family: 'Ubuntu', sans-serif;
+	outline: none;
+	transition: all .23s ease-in-out;
+}
+
+body {
+			background-color: #001f3f;
+			
+		}
+		h1{
+			color: #FFFFFF;
+			display: block;
+			margin: auto;
+			width: 90%;
+			text-align: center;
+			padding-top: 10vh;
+			padding-bottom: 10vh;
+		}
+		
+		
+		h3#erro{
+			display: block;
+			margin: auto;
+			width: 80%;
+			max-width: 200px;
+			background: #FFF;
+			color: red;
+			padding: 10px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+			border-radius: 5px;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+			
+			
+		}
+/* Login Page */
+form.log{
+	display: block;
+	margin: auto;
+	width: 90%;
+	max-width: 400px;
+	border-radius: 5px;
+	background: #FFF;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	padding: 20px 0px;
+	text-align: center;
+	
+	
+}
+form.log p{
+	font-size: 18pt;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+form input.field{
+	display: block;
+	margin: auto;
+	width: 80%;
+	padding-left: 10px;
+	height: 25px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	background: #FFF;
+	margin-top: 10px;
+	
+	
+}
+
+form input.field:focus{
+	border-color: #001f3f;
+	height: 30px;	
+}
+form input.btn{
+	display: block;
+	margin: auto;
+	margin-top: 25px;
+	padding: 10px 7px;
+	border-radius: 5px;
+	border: none;
+	background: #DDD;
+	color: #666;
+	font-weight: bold;
+	cursor: pointer;
+}
+form input.btn:hover{
+	background: #001f3f;
+	color: #FFF;
+}
+.log a{
+	display: block;
+	margin: auto;
+	text-align: center;
+	width: auto;
+	text-decoration: none;
+	color: #666;
+	margin-top: 20px;
+	font-size: 10pt;
+	cursor: pointer;
+}
+.log a:hover{
+	color: #000;
+}
+
+#registrar{
+	display: none;
+}
+form input.field:focus{
+	border-color: #001f3f;
+	
+	
+}
+#credits{
+	display: block;
+	text-align: center;	
+	margin: auto;
+	width: 90%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #FFF;
+	font-size: 10pt;
+		
+		
+}
+
+
+#loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	display: none;
+		
+}
+#opacity {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	background: #000;
+	opacity: 0.8;
+	z-index: -1;
+}
