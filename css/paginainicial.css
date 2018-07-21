@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+h1{
+	text-align: center;
+}
+
+form #publicar{
+	width: 100%;
+	padding: 10px;
+	margin-left: 20px;
+	text-align: center;
+}
+
+form #texto{
+	margin-left: 30%;
+	display: block;
+	width: 40%;
+	height: 255px;
+	text-align: center;
+	
+}

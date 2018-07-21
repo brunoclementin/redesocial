@@ -6,15 +6,14 @@
 
 	
 	$texto = $_POST["post_text"];
-	$user = $_SESSION["usuadio"];
-	$email = $_SESSION["usuario.email"];
+	$user = $_SESSION["usuario"];
 	$usuario = $_SESSION["usuario.nome"];
 
 	$postDAO = new PostDAO();
-	if ($texto = ""){
+	if ($texto == ""){
 		echo "<h3>Você tem que escrever alguma coisa</h3>";		
 	}else{
-		$postar = array($user,$usuario,$texto,$email);
+		$postar = array($texto,$user,$usuario);
 		$sucesso = $postDAO->Postar($postar);
 		if($sucesso){
 			header("Location: feed.php");

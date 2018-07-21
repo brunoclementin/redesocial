@@ -9,7 +9,7 @@
 	
 	
 		function Postar($post){
-			$comando = $this->prepare("INSERT INTO posts (user,nome,texto,email,data) VALUES (?,?,?,?,now())");
+			$comando = $this->prepare("INSERT INTO posts (texto,id_user,nome,data) VALUES (?,?,?,now())");
 			
 			try{$comando->execute($post);
 				return true;

@@ -1,9 +1,9 @@
 <?php
 
 class Conexao extends PDO {
-	private $database ="mysql:host=localhost:3307; dbname=redesocial; charset=utf8;";
+	private $database ="mysql:host=localhost:3306; dbname=redesocial3; charset=utf8;";
 	private $user ="root";
-	private $password = "usbw";
+	private $password = "";
 	public static $handle = null;
 	function __construct() {
 		try {
