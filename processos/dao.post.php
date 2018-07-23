@@ -22,7 +22,7 @@
 		}
 		
 		function ListarPost(){
-			$resultado = $this->query("SELECT * FROM posts ORDER BY data ASC");
+			$resultado = $this->query("SELECT * FROM posts ORDER BY data ");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$lista = $resultado->fetchAll();
 			
