@@ -5,7 +5,7 @@
 
 
 	
-	$texto = $_POST["post_text"];
+	$texto = $_POST["textoresposta"];
 	$user = $_SESSION["usuario"];
 	$usuario = $_SESSION["usuario.nome"];
 
