@@ -13,13 +13,23 @@
 			
 			try{$comando->execute($post);
 				return true;
-		}
+			}
 			catch(Exception $e){
 				$this->Mensagem = $e->getMessage();
 				return false;
-		}	
+			}	
 	
-	}
+		}
+		
+		function ListarPost(){
+			$resultado = $this->query("SELECT * FROM posts ORDER BY data ASC");
+			$resultado->setFetchMode(PDO::FETCH_ASSOC);
+			$lista = $resultado->fetchAll();
+			
+			return $lista;
+		}
+		
+		
 		
 }
 
