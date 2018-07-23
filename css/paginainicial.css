@@ -11,11 +11,19 @@ form #publicar{
 	text-align: center;
 }
 
-form #texto{
+form #textoresposta{
 	margin-left: 30%;
 	display: block;
 	width: 40%;
 	height: 255px;
 	text-align: center;
+	
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 300px;
 	
 }
