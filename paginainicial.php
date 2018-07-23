@@ -29,11 +29,8 @@ if($current_time >= $time && $current_time < $time2) {
 
 <link rel="stylesheet" type="text/css" href="css/paginainicial.css"/>
 <div id="posts">
-<<<<<<< HEAD
-			<!--<h1>O que você entende por Resiliência?</h1>-->
-=======
+
 			<h1><?=$pergunta["perguntas"];?></h1>
->>>>>>> origin/master
 	
 			<form action="post_grava.php" method="post" id="publicar">
 				<input type="hidden" name="idpergunta" value="<?=$pergunta["id"];?>"/>
