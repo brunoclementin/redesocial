@@ -5,10 +5,10 @@
 	include("processos/dao.pergunta.php");
 
 	$today = date_default_timezone_set('America/Sao_Paulo');
-	$time = 070000;
-	$time2 = 130000;
-	$time3 = 190000;
-	$time4 = 230000;
+	$time = 0700;
+	$time2 = 1300;
+	$time3 = 1900;
+	$time4 = 2300;
 	$current_time = (int) date('Hi');
 	
 	$perguntaDAO = new PerguntaDAO();
@@ -75,7 +75,7 @@ if($current_time >= $time && $current_time < $time2) {
 
 
 ?>
-	<h1><?=$pergunta["perguntas"]?></h1>
+	<h1><?=$pergunta["perguntas"];?></h1>
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
 			<input type="hidden" name="idpergunta" value="<?=$perguntas["id"];?>"/>
