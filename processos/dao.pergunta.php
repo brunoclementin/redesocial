@@ -15,7 +15,7 @@
 		}
 		
 		 function ListarDataHora1(){
-			$resultado = $this->query("SELECT perguntas FROM pergunta WHERE data = TIME('07:00:00')  AND CURRENT_DATE() ");
+			$resultado = $this->query("SELECT * FROM pergunta WHERE data = TIME('07:00:00')  AND CURRENT_DATE() ");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$pergunta = $resultado->fetchAll();
 			
@@ -23,7 +23,7 @@
 		}
 		
 		function ListarDataHora2(){
-			$resultado = $this->query("SELECT perguntas FROM pergunta WHERE data = TIME('13:00:00')   AND CURRENT_DATE() ");
+			$resultado = $this->query("SELECT * FROM pergunta WHERE data = TIME('13:00:00')   AND CURRENT_DATE() ");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$pergunta = $resultado->fetchAll();
 			
@@ -31,7 +31,7 @@
 		}
 		
 		function ListarDataHora3(){
-			$resultado = $this->query("SELECT perguntas FROM pergunta WHERE data = TIME('19:00:00') AND CURRENT_DATE() ");
+			$resultado = $this->query("SELECT * FROM pergunta WHERE data = TIME('19:00:00') AND CURRENT_DATE() ");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$pergunta = $resultado->fetchAll();
 			
@@ -39,7 +39,7 @@
 		}
 		
 		function ListarDataHora4(){
-			$resultado = $this->query("SELECT perguntas FROM pergunta WHERE data = TIME('23:00:00') AND CURRENT_DATE() ");
+			$resultado = $this->query("SELECT * FROM pergunta WHERE data = TIME('23:00:00') AND CURRENT_DATE() ");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$pergunta = $resultado->fetchAll();
 			

@@ -14,7 +14,7 @@
 	<?php 
 		foreach($postslista as $post){
 	?>
-	<h3>Pergunta de Exemplo</h3>
+	<h3><?=$post["perg"];?></h3>
 	<img src="#" id="user"/>
 	<p id="user"><?=$post["nome"];?></p>
 	<span><?=$post["data"];?></span>

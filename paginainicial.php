@@ -78,7 +78,7 @@ if($current_time >= $time && $current_time < $time2) {
 	<h1><?=$pergunta["perguntas"];?></h1>
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
-			<input type="hidden" name="idpergunta" value="<?=$perguntas["id"];?>"/>
+			<input type="hidden" name="idpergunta" value="<?=$pergunta["id_per"];?>"/>
 			<textarea name="textoresposta" placeholder="O que você pensa sobre isso?" id="textoresposta"></textarea>
 			<input type="submit" id="submit" value="Publicar"/>
 		</form>			

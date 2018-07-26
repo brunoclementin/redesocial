@@ -9,7 +9,7 @@
 	
 	
 		function Postar($post){
-			$comando = $this->prepare("INSERT INTO posts (texto,id_user,nome,data) VALUES (?,?,?,now())");
+			$comando = $this->prepare("INSERT INTO posts (texto,id_user,nome,id_pergunta,data) VALUES (?,?,?,?,now())");
 			
 			try{$comando->execute($post);
 				return true;
@@ -22,16 +22,12 @@
 		}
 		
 		function ListarPost(){
-			$resultado = $this->query("SELECT * FROM posts ORDER BY data ");
+			$resultado = $this->query("SELECT p.*, ask.perguntas as perg FROM posts p inner join pergunta ask ON (p.id_pergunta = ask.id_per)");
 			$resultado->setFetchMode(PDO::FETCH_ASSOC);
 			$lista = $resultado->fetchAll();
 			
 			return $lista;
-		}
-		
-		
+		}		
 		
 }
-
-
 ?>
