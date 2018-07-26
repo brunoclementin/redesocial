@@ -5,6 +5,13 @@
 	class RegistroDAO extends Conexao{
 		public $Mensagem = "";
 		
+		
+		function ListarUsuario(){
+			$resultado = $this->query("SELECT * FROM users WHERE id = ?");
+				$resultado 
+		}
+		
+		
 		function BuscarEmail($email){
 			$comando = $this->prepare("SELECT * FROM users WHERE email= ?");
 			
@@ -40,6 +47,18 @@
 		}
 	}
 		
+		function alterarFoto($usuario){
+			$comando = $this->prepare("UPDATE users set foto = ?
+										WHERE id = ?");
+			try{
+				$comando->execute($usuario);
+				return true;
+			}
+			catch(Exception $e){
+				$this->Mensagem = $e->getMessage();
+				return false;
+			}
+		}
 		
 		
 		function Logar($usuario){
