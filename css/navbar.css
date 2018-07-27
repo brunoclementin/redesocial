@@ -1,7 +1,9 @@
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+	height: 50px;
     overflow: hidden;
     background-color: #333;
 }
@@ -23,7 +25,24 @@ li a:hover {
     background-color: #111;
 }
 
-#userFoto {
-	display: block;
+.userFoto {
 	float: right;
+}
+
+.userFoto a {
+	float: right;
+	display:inline-block;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+
+}
+
+#campoFoto img {
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	border-radius: 30px;
+	
+	
 }

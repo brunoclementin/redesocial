@@ -8,15 +8,19 @@
 
 ?>
 
-
+<link rel="stylesheet" type="text/css" href="css/feed.css" />
 
 <div id="post">
 	<?php 
 		foreach($postslista as $post){
 	?>
 	<h3><?=$post["perg"];?></h3>
-	<img src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
+	
+	<div class="commentPerfil">
+	<img id="campoFoto" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
 	<p id="user"><?=$post["nome"];?></p>
+	</div>
+	
 	<span><?=$post["data"];?></span>
 	<p id="texto"><?=$post["texto"];?></p>
 				
