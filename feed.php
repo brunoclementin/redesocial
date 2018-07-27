@@ -20,7 +20,12 @@
 	<span><?=$post["data"];?></span>
 	<p id="texto"><?=$post["texto"];?></p>
 				
-	<img src="#" id="gosto" alt="concordo" /></br>
+	<img src="#" id="gosto" alt="concordo" />
+	<span id="abre_comentario" onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Comentar</span>
+	<div id="<?=$post["id_post"];?>" name="divComentar">
+		<textarea placeholder="digite seu comentario" ></textarea>
+	</div>
+	
 	<?php } ?>
 	</div>
 
