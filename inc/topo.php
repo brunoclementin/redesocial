@@ -24,14 +24,18 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 <body>
 	<header>
 		<nav  class="container">
-			<ul>
+		
+		<ul>
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="perfil.php">Perfil</a></li>
 			<li><a href="#" >Noticias</a></li></lo>
 			<li><a href="logout.php">Sair</a></li>
-			<li id="userFoto">
+			<li class="userFoto">
+			<div id="campoFoto">
 			<a><img src="fotos/perfil/<?=$buscarEmail["foto"]?>"/></a></li>
-			</ul>
+			</div>
+		</ul>
+		
 		</nav>
 	
 	</header>
