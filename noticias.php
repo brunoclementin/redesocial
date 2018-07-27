@@ -27,13 +27,13 @@
 		$feed = file_get_contents('http://pox.globo.com/rss/g1/');
 		$rss = simplexml_load_string($feed);
 		
-		 //echo "<pre>"; print_r($rss);
+		 echo "<pre>"; print_r($rss);
 		$especifico = $rss->channel->item[0];
 		
 		
 		echo 'Titulo:', $especifico->title, '<br>';		
 		echo  $especifico->description, '<br>';
-		echo  $especifico->media, '<br>';
+		echo  $especifico->guid,'<br>';
 		
 		 ?>
 		 
@@ -50,6 +50,24 @@
 			echo '<p><a href="'.$noticia->link.'" title="'. $noticia->title .'">'.$noticia->title.''.$noticia->description.'</a></p>';
 }
 	*/?>
+	</div>
+
+	<div id="g1">
+		
+	 <?php
+		$feed = file_get_contents('https://feeds.folha.uol.com.br/opiniao/rss091.xml');
+		$rss = simplexml_load_string($feed);
+		
+		 echo "<pre>"; print_r($rss);
+		$especifico = $rss->channel->item[8];
+		
+		
+		echo 'Titulo:', $especifico->title, '<br>';		
+		echo  $especifico->description, '<br>';
+		
+		
+		 ?>
+		 
 	</div>
 
 
