@@ -15,7 +15,7 @@
 		foreach($postslista as $post){
 	?>
 	<h3><?=$post["perg"];?></h3>
-	<img src="#" id="user"/>
+	<img src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
 	<p id="user"><?=$post["nome"];?></p>
 	<span><?=$post["data"];?></span>
 	<p id="texto"><?=$post["texto"];?></p>

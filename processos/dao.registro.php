@@ -4,13 +4,7 @@
 
 	class RegistroDAO extends Conexao{
 		public $Mensagem = "";
-		
-		
-		function ListarUsuario(){
-			$resultado = $this->query("SELECT * FROM users WHERE id = ?");
-				$resultado 
-		}
-		
+
 		
 		function BuscarEmail($email){
 			$comando = $this->prepare("SELECT * FROM users WHERE email= ?");
