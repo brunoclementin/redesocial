@@ -31,9 +31,9 @@
 		$especifico = $rss->channel->item[0];
 		
 		
-		echo 'Titulo:', $especifico->title, '<br>';		
-		echo  $especifico->description, '<br>';
-		echo  $especifico->media, '<br>';
+		echo 'Titulo:', $especifico->title, '<br>';		//http://php.net/manual/pt_BR/function.trim.php TRIM
+		echo ($especifico->description), '<br>';  //https://stackoverflow.com/questions/30776310/how-to-trim-n-characters-from-a-string-in-php SBSTR
+		//echo  $especifico->media, '<br>';
 		
 		 ?>
 		 
