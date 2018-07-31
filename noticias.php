@@ -1,81 +1,16 @@
 <?php 
 	include("inc/topo.php");
+	include("xmlnoticias.php");
 
+	
 ?>
-<div id="elpais">
-		
-	 <?php
-		$feed = file_get_contents('https://brasil.elpais.com/rss/brasil/portada_completo.xml');
-		$rss = new SimpleXmlElement($feed);
-		
-		 //echo "<pre>"; print_r($rss);
-		$especifico = $rss->channel->item[1];
-		
-		
-		$enclosure = $especifico->enclosure[0]->attributes();
-
-		echo 'Titulo:', $especifico->title, '<br>';
-		echo  $especifico->description, '<br>';
-		echo '<img src="', $enclosure->url,'">';
-		 ?>
-		 
+	<div id="noticiaCapa" align="center">
+		<h1><?=$elpais->title;?></h1>
+		<img src="<?=$imgelpais->url?>">
 	</div>
 	
-	<div id="g1">
-		
-	 <?php
-		$feed = file_get_contents('http://pox.globo.com/rss/g1/');
-		$rss = simplexml_load_string($feed);
-		
-		 echo "<pre>"; print_r($rss);
-		$especifico = $rss->channel->item[0];
-		
-		
-<<<<<<< HEAD
-		echo 'Titulo:', $especifico->title, '<br>';		//http://php.net/manual/pt_BR/function.trim.php TRIM
-		echo ($especifico->description), '<br>';  //https://stackoverflow.com/questions/30776310/how-to-trim-n-characters-from-a-string-in-php SBSTR
-		//echo  $especifico->media, '<br>';
-=======
-		echo 'Titulo:', $especifico->title, '<br>';		
-		echo  $especifico->description, '<br>';
-		echo  $especifico->guid,'<br>';
->>>>>>> origin/master
-		
-		 ?>
-		 
-	</div>
+
 	
-	<div id="uol">
-	<?php	
-		
-		/* $feed = file_get_contents('http://globoesporte.globo.com/servico/semantica/editorias/plantao/feed.rss');		
-		$rss = new SimpleXmlElement($feed);
-		
-
-		foreach(>cha$rss-nnel->item as $noticia) {
-			echo '<p><a href="'.$noticia->link.'" title="'. $noticia->title .'">'.$noticia->title.''.$noticia->description.'</a></p>';
-}
-	*/?>
-	</div>
-
-	<div id="g1">
-		
-	 <?php
-		$feed = file_get_contents('https://feeds.folha.uol.com.br/opiniao/rss091.xml');
-		$rss = simplexml_load_string($feed);
-		
-		 echo "<pre>"; print_r($rss);
-		$especifico = $rss->channel->item[8];
-		
-		
-		echo 'Titulo:', $especifico->title, '<br>';		
-		echo  $especifico->description, '<br>';
-		
-		
-		 ?>
-		 
-	</div>
-
 
 <?php 
 	include("inc/rodape.php");
