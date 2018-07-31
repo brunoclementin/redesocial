@@ -11,6 +11,7 @@
 		//Algumas descrições contem imagens então utilzamos o comando strip_tags para remoção de Tags HTML E PHP de dentro da descrição
 		//para esses casos a variavel para descrição fica $descg1, nela contem apenas o texto da descrição
 		//para os titulos das noticias devemos usar $nomedosite->title
+		//para as datas usamos $nomedosite->pubdate
 ?>
 
 <?php
