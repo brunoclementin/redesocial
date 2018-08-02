@@ -186,7 +186,21 @@
 	
 ?>
 
+<?php 
+	//Aqui temos uma estrutura de repetição para 3 noticias do elpais, podemos usar em alguns casos ela tem o limite de 3 noticias, podemos almentar também, e fazer o mesmo para as outras noticias ou podemos usar o FOREACH para trazer todas elas	
+	$limit = 3;
 
+	for($i = 0; $i >= $limit; $i++){
+		$elpais2 = $rsselpais->channel->item[$i];
+		$imgelpais2 = $elpais->enclosure[1]->attributes();
+		$descelpais2 = strip_tags($elpais2->description);
+		$titleelapais2 = $elpais2->title;
+			
+		
+	}
+
+
+?> 
 
 	
 	
