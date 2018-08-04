@@ -45,6 +45,16 @@
 				return false;
 			}
 		}
+		
+		function ListarComentario(){
+			$resultado = $this->query("SELECT c.*, u.foto as userfoto
+										FROM comentarios c INNER JOIN users u ON 
+										(c.id_usuario = u.id)");
+			$resultado->setFetchMode(PDO::FETCH_ASSOC);
+			$lista = $resultado->fetchAll();
+			
+			return $lista;
+		}
 				
 		
 }
