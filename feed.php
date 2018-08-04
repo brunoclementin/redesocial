@@ -25,9 +25,13 @@
 	<p id="texto"><?=$post["texto"];?></p>
 				
 	<img src="#" id="gosto" alt="concordo" />
-	<span id="abre_comentario" onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Comentar</span>
+	<span id="abre_comentario" onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir 			    																			Comentarios</span>
 	<div hidden="" id="<?=$post["id_post"];?>" name="divComentar">
-		<textarea placeholder="digite seu comentario" ></textarea>
+		<form action="post_grava.php" method="post" id="comentar">
+			<input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>"/>
+			<textarea name="textocomentario" id="textocomentario" placeholder="digite seu comentario"></textarea>
+			<input type="submit" name="btncomentar" value="Comentar"/>
+		</form>
 	</div>
 	
 	<?php } ?>

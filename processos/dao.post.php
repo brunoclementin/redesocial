@@ -31,7 +31,21 @@
 			$lista = $resultado->fetchAll();
 			
 			return $lista;
-		}		
+		}
+		
+		function Comentar($comentar){
+			$comando = $this->prepare("INSERT INTO comentarios																(textocomentario,id_usuario,nome_usuario,id_post,data) 
+									VALUES (?,?,?,?,now())");			
+		
+			try	{$comando->execute($comentar);
+				return true;
+			}
+			catch(Exception $e){
+				$this->Mensagem = $e->getMessage();
+				return false;
+			}
+		}
+				
 		
 }
 ?>
