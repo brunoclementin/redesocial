@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/paginainicial.css"/>
+<link rel="stylesheet" type="text/css" href="css/main.css"/>
 
 <?php 
 	include("inc/topo.php");
@@ -30,6 +31,9 @@
 		$pergunta = $perguntas[0];
 	}
 ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<h1><?=$pergunta["perguntas"];?></h1>
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
