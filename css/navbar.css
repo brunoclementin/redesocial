@@ -48,8 +48,7 @@
 }
 
 .container .userFoto a {
-	float: right;
-	
+	float: right;	
 	display:inline-block;
 	margin: 0;
 	padding: 0;	
@@ -65,7 +64,6 @@
 	margin: 0;
 	border-radius: 50%;
 	
-	
 }
 
 main {
@@ -78,11 +76,7 @@ main {
 #footer {
 	display: block;    
     width:100%;
-	clear: both;
-	
-	
-
-	
+	clear: both;	
 }
 
 @media screen and (max-width: 600px){  /*Responsividade para mobile*/
