@@ -1,18 +1,28 @@
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-	height: 50px;
-    overflow: hidden;
-    background-color: #333;
+*{
+	margin: 0;
+	font-family: 'Ubuntu', sans-serif;
+	outline: none;
+	transition: all .23s ease-in-out;
 }
 
-li {
+
+.container ul {
+	list-style-type: none; /*Remove o estilo padrao das listas*/
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	position: fixed; /*Fixa a Barra de Menu no topo mesmo quando vc da scroll down*/
+	top: 0;
+	width: 100%;
+	border: 1px solid #33334d;
+}
+
+.container li {
     float: left;
 }
 
-li a {
+.container a {
     display: block;
     color: white;
     text-align: center;
@@ -21,20 +31,28 @@ li a {
 }
 
 
-li a:hover {
+.container a:hover {
     background-color: #111;
 }
 
-.userFoto {
+.container a:hover:not(.active) {   /*O item de lista q tiver a classe active ficará destacado*/
+	background-color: #111;
+}
+
+.active {
+	background-color: #c2c2d6;
+}
+
+.container .userFoto {
 	float: right;
 }
 
-.userFoto a {
+.container .userFoto a {
 	float: right;
+	
 	display:inline-block;
 	margin: 0;
-	padding: 0;
-	height: 50px;
+	padding: 0;	
 	border: 0;
 	border-radius: 50%;
 
@@ -63,4 +81,16 @@ main {
 	clear: both;
 	
 	
+
+	
+}
+
+@media screen and (max-width: 600px){  /*Responsividade para mobile*/
+	ul li.right,
+	ul li {float: none;}
+}
+
+body {
+	margin-top: 50px;
+
 }

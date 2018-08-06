@@ -7,8 +7,7 @@
 
 #campoFoto {
 	width: 48px;
-	height: 48px;
-	
+	height: 48px;	
 	border-radius: 50%;
 }
 
@@ -17,7 +16,8 @@
 }
 
 .commentPerfil{	
-	overflow-y: auto;
+	margin-top: 5px;
+	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
 	background:#1e182f;
 	padding:5px;	
 	margin-bottom:5px;
@@ -32,11 +32,13 @@
 p#texto {
 	margin: 0;
 	padding: 10px;
-	height: auto;
-	max-height: 80%;
-	
+	height: auto;	
 	
 }
+
+
+	
+
 
 
 

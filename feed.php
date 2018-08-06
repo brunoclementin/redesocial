@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
 <script type="text/javascript">
+	
+	//Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
 var wordLimit = 50;
 
 $(function() {
