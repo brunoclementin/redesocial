@@ -1,5 +1,6 @@
+</div>
 </main>
-	<footer>
+	<footer id="footer">
 		<?php
 		date_default_timezone_set('UTC');
 		echo date("F j, Y, g:i a");

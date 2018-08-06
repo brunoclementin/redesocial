@@ -15,9 +15,10 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 <html>
 <head>
 <meta charset="utf-8">
+	<link href="main.css?version=12" />
 	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Documento sem título</title>
 </head>
 
@@ -37,6 +38,8 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		</ul>
 		
 		</nav>
+	<div class="geral">
+	
 	
 	</header>
 	<main>
