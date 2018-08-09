@@ -40,11 +40,11 @@ body {
 	margin-top: 5px;
 	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
 	background-image: linear-gradient(135deg, rgb(75,0,130), rgb(138,43,226,0.5));
-	
+	display: inline-block;
 	padding:5px;	
 	margin-bottom:5px;
 	margin-right:5px;
-	float:right;
+	float:none;
 	width:400px;
 	max-height:300px;
 	min-height: 350px;
