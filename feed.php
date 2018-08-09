@@ -59,16 +59,18 @@ $(function() {
 	
 	
 	<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
-	<p id="user"><?=$post["nome"];?></p>
+	<p id="user"><b><?=$post["nome"];?></b></p>
 	
 	
 	<span><?=$post["data"];?></span>
 		
 	<p id="texto"><?=$post["texto"];?></p>
 	
-			
-	<img src="#" id="gosto" alt="concordo" />
-	<span id="abre_comentario" onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir 			    																			Comentarios</span>
+		<!--Utilizado CDN Font Awesome para aplicar icone-->	
+	<button style="font-size:24px">Concordo <i class="fa fa-hand-peace-o"></i></button> 
+	<button style="font-size:24px" id="abre_comentario" 
+			onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
+		<i class="fa fa-angle-double-down"></i></button>
 	
 	
 	<div hidden="" id="<?=$post["id_post"];?>" name="divComentar">
@@ -83,7 +85,7 @@ $(function() {
 			if($coment["id_post"] == $post["id_post"]){?>
 			
 			<img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>"/>
-			<p id="usercoment"><?=$coment["nome_usuario"]?></p>
+			<p id="usercoment"><b><?=$coment["nome_usuario"]?></b></p>
 			<span id="textocoment"><?=$coment["textocomentario"]?></span>
 			<?php }} ?>
 		</form>

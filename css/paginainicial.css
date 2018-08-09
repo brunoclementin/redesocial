@@ -20,7 +20,11 @@ form #textoresposta{
 	
 }
 
-
+#submit {
+	display: block;
+	align-content: center;
+	text-align: center;
+}
 
 body {
 	margin-top: 50px;
@@ -34,4 +38,11 @@ textarea {
 textarea.inset {outline-style: inset;
 	border: 4px solid black;
     outline-color: gray;
+}
+
+#footer {
+	display: block;
+	text-align: center;
+	margin-top: 250px;
+	margin-bottom: auto;
 }
