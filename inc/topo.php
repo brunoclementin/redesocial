@@ -33,7 +33,7 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<a href="perfil.php"><img src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?=$buscarEmail["nome"]?></a></li>
 			</div>
 			<li><a href="paginainicial.php">Inicio</a></li>
-			<li><a href="perfil.php">Perfil</a></li>
+			<li><a href="feed.php">Feed</a></li>
 			<li><a href="noticias.php">Noticias</a></li></lo>
 			<li><a href="logout.php">Sair</a></li>
 			

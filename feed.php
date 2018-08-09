@@ -82,7 +82,7 @@ $(function() {
 			foreach($comentariolista as $coment){
 			if($coment["id_post"] == $post["id_post"]){?>
 			
-			<img id="campoFoto" src="fotos/perfil/<?=$coment["userfoto"]?>"/>
+			<img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>"/>
 			<p id="usercoment"><?=$coment["nome_usuario"]?></p>
 			<span id="textocoment"><?=$coment["textocomentario"]?></span>
 			<?php }} ?>

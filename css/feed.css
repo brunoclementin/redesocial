@@ -39,15 +39,16 @@ body {
 .commentPerfil{	
 	margin-top: 5px;
 	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
-	background:#1e182f;
+	background-image: linear-gradient(135deg, rgb(75,0,130), rgb(138,43,226,0.5));
+	
 	padding:5px;	
 	margin-bottom:5px;
 	margin-right:5px;
 	float:right;
 	width:400px;
 	max-height:300px;
-	min-height: 300px;
-	border-radius: 10px;
+	min-height: 350px;
+	border-radius: 4px;
 }
 
 p#texto {

@@ -69,14 +69,16 @@ left:-500px
 	padding-bottom:1em;
 	}
 
-.container {
-	
+.container {	
 	position:relative;
 	font-size:1.0em;
 	margin:1em 0 1em 6em;
 	padding:0;
 	}
-.container li {padding:0; margin:0;}
+.container li {
+	padding:0; 
+	margin:0;
+}
 .container li a,  .container li a:link {
 	font-size:1.2em;
 	color:rgb(255,255,255);
@@ -110,9 +112,11 @@ left:-500px
 	
 }
 #footer {
-	display: block;    
+	display: block;
+	
     width:100%;
-	clear: both;	
+	clear: both;
+	margin-bottom: 0;
 }
 
 

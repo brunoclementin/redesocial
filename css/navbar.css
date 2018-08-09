@@ -78,6 +78,7 @@ main {
 	display: block;    
     width:100%;
 	clear: both;	
+	margin-bottom: 0;
 }
 
 @media screen and (max-width: 600px){  /*Responsividade para mobile*/
