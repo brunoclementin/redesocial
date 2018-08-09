@@ -67,7 +67,7 @@ $(function() {
 	<p id="texto"><?=$post["texto"];?></p>
 	
 		<!--Utilizado CDN Font Awesome para aplicar icone-->	
-	<button style="font-size:24px">Concordo <i class="fa fa-hand-peace-o"></i></button> 
+	<button style="font-size:24px"><i class="fa fa-thumbs-o-up"></i></button>
 	<button style="font-size:24px" id="abre_comentario" 
 			onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
 		<i class="fa fa-angle-double-down"></i></button>
