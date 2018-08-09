@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/paginainicial.css"/>
-<link rel="stylesheet" type="text/css" href="css/main.css"/>
+
 
 <?php 
 	include("inc/topo.php");

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+
 
 <?php
 include("inc/topo.php");

@@ -1,3 +1,24 @@
+*{
+	margin: 0;
+	font-family: 'Ubuntu', sans-serif;
+	outline: none;
+	transition: all .23s ease-in-out;
+}
+/* regra para o box-sizing */
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/* regra para o clear float */
+.cf:before,
+.cf:after {content: " ";display: table;}
+.cf:after {clear: both;}
+.cf {*zoom: 1;}
+body {
+	margin-left:55px; /* espaço à esquerda para a barra vertical vísivel do menu */
+	font:  Verdana, Helvetica, Arial, sans-serif;
+	}
 .post {	
 	margin: 0;
 	padding: 0;
@@ -5,13 +26,13 @@
 	
 }
 
-#campoFoto {
+#campoFotoFeed {
 	width: 48px;
 	height: 48px;	
 	border-radius: 50%;
 }
 
-#campoFoto img {
+#campoFotoFeed img {
 	border: 0;
 }
 

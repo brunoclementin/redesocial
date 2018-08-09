@@ -16,25 +16,27 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 <head>
 <meta charset="utf-8">
 	<link href="main.css?version=12" />
-	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="css/navbar.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/menulateral.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Documento sem título</title>
 </head>
 
 <body>
-	<header>
+	<header class="lateral">
 		<nav  class="container">
 		
-		<ul>
+		<ul class="box">
+			<li class="userFoto">
+			<div id="campoFoto">
+			<a href="perfil.php"><img src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?=$buscarEmail["nome"]?></a></li>
+			</div>
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="perfil.php">Perfil</a></li>
 			<li><a href="noticias.php">Noticias</a></li></lo>
 			<li><a href="logout.php">Sair</a></li>
-			<li class="userFoto">
-			<div id="campoFoto">
-			<a href="perfil.php"><img src="fotos/perfil/<?=$buscarEmail["foto"]?>"/></a></li>
-			</div>
+			
 		</ul>
 		
 		</nav>

@@ -58,7 +58,7 @@ $(function() {
 	<h3 id="perguntatexto"><?=$post["perg"];?></h3>
 	
 	
-	<img id="campoFoto" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
+	<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
 	<p id="user"><?=$post["nome"];?></p>
 	
 	
