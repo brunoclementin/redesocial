@@ -1,11 +1,15 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 /* CSS Document */
 
 *{
 	margin: 0;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12pt;
 	outline: none;
 	transition: all .23s ease-in-out;
+	
+	
 }
 /* regra para o box-sizing */
 *, *:before, *:after {
@@ -20,7 +24,8 @@
 .cf {*zoom: 1;}
 body {
 	margin-left:55px; /* espaço à esquerda para a barra vertical vísivel do menu */
-	font:  Verdana, Helvetica, Arial, sans-serif;
+	background-color: #9370DB;
+	
 	}
 .lateral {
 	padding:0 50px 0 0;
@@ -30,11 +35,11 @@ body {
 				transition: all 0.5s ease;
 	font-size:0.8em;
 	background:rgb(44,62,80);
-	background-image: -moz-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
-     background-image: -webkit-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
-      background-image: -o-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79) );
-       background-image: -ms-linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
-        background-image: linear-gradient(135deg, rgb(3,8,12), rgb(16,57,79));
+	background-image: -moz-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
+     background-image: -webkit-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
+      background-image: -o-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219) );
+       background-image: -ms-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
+        background-image: linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
 	height:100%;
 	overflow:hidden;
 	width:370px; 
@@ -71,7 +76,7 @@ left:-500px
 
 .container {	
 	position:relative;
-	font-size:1.0em;
+	font-size:0.7em;
 	margin:1em 0 1em 6em;
 	padding:0;
 	}
@@ -80,7 +85,7 @@ left:-500px
 	margin:0;
 }
 .container li a,  .container li a:link {
-	font-size:1.2em;
+	font-size:0.9em;
 	color:rgb(255,255,255);
 	text-decoration: none;
 	padding: 0.8em 0 0.8em 1em;
@@ -113,14 +118,14 @@ left:-500px
 }
 #footer {
 	display: block;
-	
+	text-align: center;
     width:100%;
 	clear: both;
 	margin-bottom: 0;
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 100px) {
 body {margin-left:0;background-size:100% 28em!important;}
 .lateral {
 	padding:0;
@@ -129,7 +134,7 @@ body {margin-left:0;background-size:100% 28em!important;}
 			-o-transition: all 0.5s ease;
 				transition: all 0.5s ease;
 	font-size:1.2em;
-	height:100%;
+	height:50%;
 	overflow:auto;
 	width:100%; 
 	position:static;
@@ -139,7 +144,7 @@ body {margin-left:0;background-size:100% 28em!important;}
 .lateral:before {
 	z-index:1000;
 	width:0;
-	text-align:center;
+	text-align:right;
 	content: "";
 	font-size:0;
 	color:white;

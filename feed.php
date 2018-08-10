@@ -55,24 +55,22 @@ $(function() {
 		foreach($postslista as $post){
 	?>
 	<div class="commentPerfil">
-	<h3 id="perguntatexto"><?=$post["perg"];?></h3>
-	
-	
-	<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
-	<p id="user"><b><?=$post["nome"];?></b></p>
-	
-	
-	<span><?=$post["data"];?></span>
-		
-	<p id="texto"><?=$post["texto"];?></p>
+		<div class="conteudoPost">
+			<h3 id="perguntatexto"><?=$post["perg"];?></h3>	
+			<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
+			<p id="user"><b><?=$post["nome"];?></br></p>
+			<span id="dataPost"><?=$post["data"];?></span>
+			<p id="texto"><?=$post["texto"];?></p>
 	
 		<!--Utilizado CDN Font Awesome para aplicar icone-->	
-	<button style="font-size:24px"><i class="fa fa-thumbs-o-up"></i></button>
-	<button style="font-size:24px" id="abre_comentario" 
-			onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
-		<i class="fa fa-angle-double-down"></i></button>
-	
-	
+			<button style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>
+			<button style="font-size:14px" id="abre_comentario" 
+					onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
+			</button>
+		</div>
+		
+		
+	<!-- Div dos comentarios -->
 	<div hidden="" id="<?=$post["id_post"];?>" name="divComentar">
 		
 		<form action="post_grava.php" method="post" id="comentar">

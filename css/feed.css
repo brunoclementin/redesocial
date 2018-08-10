@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 *{
-	margin: 0;
-	font-family: 'Ubuntu', sans-serif;
+	margin: 0;	
+	font-family: 'Montserrat', sans-serif;
 	outline: none;
 	transition: all .23s ease-in-out;
 }
@@ -17,7 +18,7 @@
 .cf {*zoom: 1;}
 body {
 	margin-left:55px; /* espaço à esquerda para a barra vertical vísivel do menu */
-	font:  Verdana, Helvetica, Arial, sans-serif;
+	
 	}
 .post {	
 	margin: 0;
@@ -39,7 +40,7 @@ body {
 .commentPerfil{	
 	margin-top: 5px;
 	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
-	background-image: linear-gradient(135deg, rgb(75,0,130), rgb(138,43,226,0.5));
+	background-color:rgba(255,255,255,0.2);
 	display: inline-block;
 	padding:5px;	
 	margin-bottom:5px;
@@ -65,3 +66,16 @@ p#texto {
 
 
 
+
+#user {
+	display: block;
+	margin-top: -38px;
+	margin-left: 55px;
+}
+
+#dataPost {
+	display: block;
+	font-size: 9pt;
+	margin-left: 10px;
+	margin-top: 15px;
+}
