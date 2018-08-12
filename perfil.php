@@ -6,7 +6,7 @@ $postDAO = new PostDAO();
 $postslista = $postDAO->ListarPost();
 $comentariolista = $postDAO->ListarComentario();
 ?>
-	<link rel="stylesheet" type="text/css" href="css/perfil.css"
+	<link rel="stylesheet" type="text/css" href="css/perfil.css">
 	<section class="perfil">	
 		<section id="infoPerfil">
 			<div id="fotoTopo">
@@ -23,10 +23,10 @@ $comentariolista = $postDAO->ListarComentario();
 						<input type="button" name="editarPergil" value="Editar Perfil">
 					</form>			
 				</div>
-			<h1>Insira sua foto</h1>
+			
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">		
 					<div>
-						<label for="foto">Foto</label>
+						<label for="foto">Insira sua foto</label>
 						<input type="file" name="arquivo" id="arquivo">  			
 						<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
 					</div>		
