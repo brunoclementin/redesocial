@@ -1,25 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@charset "utf-8";
+/* CSS Document */
 *{
 	margin: 0;	
 	font-family: 'Montserrat', sans-serif;
 	outline: none;
 	transition: all .23s ease-in-out;
 }
-/* regra para o box-sizing */
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
-/* regra para o clear float */
-.cf:before,
-.cf:after {content: " ";display: table;}
-.cf:after {clear: both;}
-.cf {*zoom: 1;}
+
+
+
 body {
 	margin-left:55px; /* espaço à esquerda para a barra vertical vísivel do menu */
 	
 	}
+.post {	
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	align-items: center;
+	align-content: center;
+	align-self: center;
+	
+	
+}
 
 #campoFotoFeed {
 	width: 48px;
@@ -32,35 +35,24 @@ body {
 }
 
 .commentPerfil{	
-	margin-top: 5px;
-	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
-	background-color:rgba(255,255,255,0.2);
-	display: inline-block;
-	padding:5px;	
-	margin-bottom:5px;
-	margin-right:5px;
-	float:none;
-	width:400px;
+	display: block;
+	padding:5px;
+	max-width: 50%;	
 	max-height:300px;
 	min-height: 350px;
+	margin-left: 25%;
+	margin-top: 5px;
+	margin-bottom:5px;	
 	border-radius: 4px;
+	overflow-y: auto; /* cria um scroll para não exeder o tamnho da div */
+	background-color:rgba(255,255,255,0.2);	
 }
 
 p#texto {
 	margin: 0;
 	padding: 10px;
 	height: auto;	
-	
 }
-
-
-	
-
-
-
-
-
-
 #user {
 	display: block;
 	margin-top: -38px;
