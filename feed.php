@@ -57,7 +57,12 @@ $(function() {
 	<div class="commentPerfil">
 		<div class="conteudoPost">
 			<h3 id="perguntatexto"><?=$post["perg"];?></h3>	
-			<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/>
+			
+			<?php if($post["usuariofoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i><?php
+										}else{?>
+			<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/><?php }?>
+			
+			
 			<p id="user"><b><?=$post["nome"];?></br></p>
 			<span id="dataPost"><?=$post["data"];?></span>
 			<p id="texto"><?=$post["texto"];?></p>
@@ -77,16 +82,23 @@ $(function() {
 			<input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>"/>
 			<textarea name="textocomentario" id="textocomentario" placeholder="digite seu comentario"></textarea>
 			<input type="submit" name="btncomentar" value="Comentar"/><br/>
+		</form>
 			<?php
 			
 			foreach($comentariolista as $coment){
 			if($coment["id_post"] == $post["id_post"]){?>
 			
-			<img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>"/>
-			<p id="usercoment"><b><?=$coment["nome_usuario"]?></b></p>
-			<span id="textocoment"><?=$coment["textocomentario"]?></span>
+			<section class="comentariosPost">
+				<?php if($coment["userfoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i><?php
+										}else{?>
+				<img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>"/><?php }?>
+				<p id="usercoment"><b><?=$coment["nome_usuario"]?></b></p>
+				<span id="dataPost"><?=$coment["data"]?><br/></span>
+				<span id="textocoment"><?=$coment["textocomentario"]?></span>
+				
+			</section>
 			<?php }} ?>
-		</form>
+		
 		</div>
 	</div>
 	

@@ -124,6 +124,12 @@ left:-500px
 	margin-bottom: 0;
 }
 
+a #nomeUsu {
+	display: inline-block;
+	
+	
+}
+
 
 @media (max-width: 100px) {
 body {margin-left:0;background-size:100% 28em!important;}

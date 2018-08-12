@@ -30,9 +30,10 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		<ul class="box">
 			<li class="userFoto">
 			<div id="campoFoto">
-			<a href="perfil.php">
-								
-				<img  src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?=$buscarEmail["nome"]?></a></li>
+			<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
+								<i class="fa fa-id-badge" style="font-size:48px"></i><?php
+										}else{?>								
+				<img  src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?><p id="nomeUsu"><?=$buscarEmail["nome"]?></p></a></li>
 			</div>
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>
