@@ -10,13 +10,21 @@ $comentariolista = $postDAO->ListarComentario();
 	<section class="perfil">	
 		<section id="infoPerfil">
 			<div class="fotoCapa">
-				<img src="fotos/capa/<?=$postslista["ftcapa"]?>"/>
-				<h1><?=$postslista["fotocapa"]?></h1>
+				<?php
+					foreach($postslista as $postcapa) {
+						if($postcapa["usuariocapa"] == !null && $postcapa["nome"] == $_SESSION["usuario.nome"]){
+				?>
+				<img src="fotos/capa/<?=$postcapa["usuariocapa"]?>"/>
+				<h1><?=$postcapa["usuariocapa"]?></h1>
+				<?php }
+					else{?>
+						<i class="fa fa-file-picture-o" style="font-size:24px"></i>
+					<?php }} ?>
 			</div>
 			<div id="fotoTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
 					<input type="file" name="fotoCapa" id="fotoCapa"/>
-					<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
+					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />
 					<button type="submit">Salvar</button>
 				</form>
 			</div>

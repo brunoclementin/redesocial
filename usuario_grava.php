@@ -39,7 +39,7 @@
 
 	//alterar e incluir foto de Capa
 	$fotocapa = GravarArquivoCapa();
-	$alterCapa = array($fotocapa, $_POST["usuario"]);
+	$alterCapa = array($fotocapa, $_POST["usercapa"]);
 	$sucess = $usuarioDAO->alterarCapa($alterCapa);
 		if ($sucess){
 			header("Location: feed.php?alterado=OK");
