@@ -7,19 +7,21 @@ $postDAO = new PostDAO();
 $postslista = $postDAO->ListarPost();
 $comentariolista = $postDAO->ListarComentario();
 $usuarioDAO = new UsuarioDAO();
-$usuario = $usuarioDAO->listarUsuario();
+$usuariolista = $usuarioDAO->listarUsuario();
+
+
 ?>
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
 	<section class="perfil">	
 		<section id="infoPerfil">
-			<div class="fotoCapa">					
-				
+			<div class="fotoCapa">
+				<?php foreach($usuariolista as $usuario){
+						if($_SESSION["usuario"] == $usuario["id"]){?>				
 				<img src="fotos/capa/<?=$usuario["fotocapa"]?>"/>
 				<h1><?=$usuario["fotocapa"]?></h1>
-				
-					
+			<?php } else { ?>					
 						<i class="fa fa-file-picture-o" style="font-size:24px"></i>
-					
+					<?php  break; }} ?>
 			</div>
 			<div id="fotoTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
