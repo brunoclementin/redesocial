@@ -2,24 +2,24 @@
 include("inc/topo.php");
 require_once("processos/dao.registro.php");
 include("processos/dao.post.php");
+require_once("processos/dao.usuario.php");
 $postDAO = new PostDAO();
 $postslista = $postDAO->ListarPost();
 $comentariolista = $postDAO->ListarComentario();
+$usuarioDAO = new UsuarioDAO();
+$usuario = $usuarioDAO->listarUsuario();
 ?>
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
 	<section class="perfil">	
 		<section id="infoPerfil">
-			<div class="fotoCapa">
-				<?php
-					foreach($postslista as $postcapa) {
-						if($postcapa["usuariocapa"] == !null && $postcapa["nome"] == $_SESSION["usuario.nome"]){
-				?>
-				<img src="fotos/capa/<?=$postcapa["usuariocapa"]?>"/>
-				<h1><?=$postcapa["usuariocapa"]?></h1>
-				<?php }
-					else{?>
+			<div class="fotoCapa">					
+				
+				<img src="fotos/capa/<?=$usuario["fotocapa"]?>"/>
+				<h1><?=$usuario["fotocapa"]?></h1>
+				
+					
 						<i class="fa fa-file-picture-o" style="font-size:24px"></i>
-					<?php }} ?>
+					
 			</div>
 			<div id="fotoTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
