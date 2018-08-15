@@ -23,7 +23,8 @@
 		}
 		
 		function ListarPost(){
-			$resultado = $this->query("SELECT p.*, ask.perguntas as perg, u.foto as usuariofoto, u.nome as usuarionome
+			$resultado = $this->query("SELECT p.*, ask.perguntas as perg, u.foto as usuariofoto, u.nome as usuarionome,
+									  u.fotocapa as usuariocapa
 									  FROM posts p inner join pergunta ask ON (p.id_pergunta = ask.id_per)
 									  	   inner join users u ON (p.id_user = u.id) ORDER by data DESC
 									  ");

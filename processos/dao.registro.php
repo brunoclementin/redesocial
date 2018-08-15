@@ -54,6 +54,21 @@
 			}
 		}
 		
+		function alterarCapa($usuario){
+			$comando = $this->prepare("UPDATE users set fotocapa = ?
+										WHERE id = ?");
+			try{
+				$comando->execute($usuario);
+				return true;
+			}
+			catch(Exception $e){
+				$this->Mensagem = $e->getMessage();
+				return false;
+			}
+		}
+		
+		
+		
 		
 		function Logar($usuario){
 			$comando = $this->prepare("SELECT * FROM users WHERE email = ?, password = ?");

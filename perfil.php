@@ -9,10 +9,15 @@ $comentariolista = $postDAO->ListarComentario();
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
 	<section class="perfil">	
 		<section id="infoPerfil">
+			<div class="fotoCapa">
+				<img src="fotos/capa/<?=$postslista["ftcapa"]?>"/>
+				<h1><?=$postslista["fotocapa"]?></h1>
+			</div>
 			<div id="fotoTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
 					<input type="file" name="fotoCapa" id="fotoCapa"/>
 					<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
+					<button type="submit">Salvar</button>
 				</form>
 			</div>
 			<div class="infoUsu">
