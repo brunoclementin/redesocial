@@ -1,0 +1,6 @@
+body, .lateral {
+	background-image: url("../fotos/bg/noite-azul.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-size: cover;
+}

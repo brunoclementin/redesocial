@@ -105,10 +105,17 @@ left:-500px
 	}
 
 
+#campoFoto {
+	height: 76px;
+	width: 276px;
+}
 
+#fotoCapa {
+	height: 76px;
+	width: 276px;
+}
 
-
-#campoFoto img {
+#fotoPerfil {
 	height: 48px;
 	width: 48px;
 	padding: 0;
@@ -170,3 +177,6 @@ body {margin-left:0;background-size:100% 28em!important;}
 .container li:first-child a {border-top:1px solid #ccc;}	
 }
 
+#fotoCapa {
+	
+}
