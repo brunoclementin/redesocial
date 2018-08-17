@@ -61,21 +61,24 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		<nav  class="container">
 		
 		<ul class="box">
+			
+			<div id="campoFoto" style="background: url(fotos/perfil/<?=$buscarEmail["fotocapa"];?>)">
 			<li class="userFoto">
-			<div id="campoFoto">
 			<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
 								<i class="fa fa-id-badge" style="font-size:48px"></i><?php
 										}else{?>								
 				<img id="fotoPerfil" src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?><p id="nomeUsu"><?=$buscarEmail["nome"]?></p>
 				
 				
-							<!-- Ajustando a capa para aparecer atrás do perfil -->
-				<div id="fotoCapa">
-				<img id="fotoCapa" src="fotos/perfil/<?=$buscarEmail["fotocapa"]?>"/>
-				</div>
+							<!-- Ajustando a capa para aparecer atrás do perfil 
+					
 				
-				</a></li>
+					<img id="fotoCapa" src="fotos/perfil/<?=$buscarEmail["fotocapa"]?>"/>  -->
+				
+			</a>
+			</li>
 			</div>
+			
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>
 			<li><a href="noticias.php">Noticias</a></li></lo>
