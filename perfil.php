@@ -19,11 +19,11 @@ $usuariolista = $usuarioDAO->listarUsuario();
 						if($_SESSION["usuario"] == $usuario["id"] && $usuario["fotocapa"] != null){?>				
 				<img src="fotos/capa/<?=$usuario["fotocapa"]?>"/>
 				<h1><?=$usuario["fotocapa"]?></h1>
-			<?php }} ?>	
-				<?php if($usuario["fotocapa"] == NULL){?>
-				<i class="material-icons" style="font-size:36px"></i>
-
-				<?php }?>	
+			<?php }else if ($_SESSION["usuario"] == $usuario["id"] && $usuario["fotocapa"] == null){?>
+				
+				<i class="fa fa-image" style="font-size:500px"></i> 
+			<?php }}?>
+					
 			</div>
 			<div id="fotoTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
