@@ -21,7 +21,7 @@ $usuariolista = $usuarioDAO->listarUsuario();
 				<h1><?=$usuario["fotocapa"]?></h1>
 			<?php }else if ($_SESSION["usuario"] == $usuario["id"] && $usuario["fotocapa"] == null){?>
 				
-				<i class="fa fa-image" style="font-size:500px;color:aqua"></i> 
+				<i class="fa fa-image" style="font-size:500px;color:aqua;margin-top: -33px;"></i> 
 			<?php }}?>
 					
 			</div>
