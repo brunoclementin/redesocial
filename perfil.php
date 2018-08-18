@@ -16,12 +16,13 @@ $usuariolista = $usuarioDAO->listarUsuario();
 		<section id="infoPerfil">
 			<div class="fotoCapa">
 				<?php foreach($usuariolista as $usuario){
-						if($_SESSION["usuario"] == $usuario["id"]){?>				
+						if($_SESSION["usuario"] == $usuario["id"] && $usuario["fotocapa"] != null){?>				
 				<img src="fotos/capa/<?=$usuario["fotocapa"]?>"/>
 				<h1><?=$usuario["fotocapa"]?></h1>
 			<?php }} ?>	
 				<?php if($usuario["fotocapa"] == NULL){?>
-				<i class="fa fa-file-picture-o" style="font-size:24px"></i>
+				<i class="material-icons" style="font-size:36px"></i>
+
 				<?php }?>	
 			</div>
 			<div id="fotoTopo">

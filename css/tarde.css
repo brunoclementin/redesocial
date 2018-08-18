@@ -1,0 +1,6 @@
+body, .lateral {
+	background-image: url("../fotos/bg/tarde.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-size: cover;
+}
