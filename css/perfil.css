@@ -33,11 +33,9 @@ div.fotoCapa{
 	max-width: 50%;
 	max-height: 425px;
 	left: 50%;
-	margin-left: -425px;
-	
-	
-	
+	margin-left: -425px;	
 }
+
 
 
 #campoFotoFeed {
@@ -52,7 +50,7 @@ div.fotoCapa{
 
 .commentPerfil{	
 	display: block;
-	position: relative;
+	position: relative; 
 	padding:5px;
 	max-width: 50%;	
 	max-height:300px;

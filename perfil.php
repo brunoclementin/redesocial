@@ -23,13 +23,14 @@ $usuariolista = $usuarioDAO->listarUsuario();
 				<i class="fa fa-image" style="font-size:500px;color:aqua;margin-top: -33px;"></i> 
 			<?php }}?>
 					
-			</div>
+			
 			<div id="fotoTopo">
-				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">
+				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">					
 					<input type="file" name="fotoCapa" id="fotoCapa"/>
 					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />
 					<button type="submit">Salvar</button>
 				</form>
+			</div>
 			</div>
 			<div class="infoUsu">
 				<div id="infoSobre">
