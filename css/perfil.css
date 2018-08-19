@@ -39,15 +39,16 @@ div.fotoCapa{
 #fotoTrocaTopo{
 	position: absolute;
 	margin-top: 0;
-	right: 50%;
-	margin-left: -25%;	
+	left: 50%;
+	margin-left: -397.5px;
+	width: 851px;
 }
 div.infoUsu{
 	width: 851px;
 	height: 150px;
 	position: absolute;
 	left: 50%;
-	margin-left: -398px;
+	margin-left: -397.5px;
 	background-color:rgba(255,255,255,0.5);
 	top: 275px;	
 	z-index: 2;
