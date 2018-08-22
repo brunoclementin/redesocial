@@ -36,21 +36,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<?php
 				date_default_timezone_set("America/Sao_Paulo"); //Lista em: http://www.php.net/manual/pt_BR/timezones.php
 				$hora = date("G");
-				if ($hora >= 6 && $hora < 12) echo 'body, .lateral { background-image: url("../fotos/bg/manha.jpg");
-																		background-repeat: no-repeat;
-																		background-size: 100%;
-																		background-size: cover;
-																		}'; //Dia
-				elseif ($hora >= 12 && $hora < 19) echo 'body, .lateral {	background-image: url("../fotos/bg/tarde.jpg");
-																			background-repeat: no-repeat;
-																			background-size: 100%;
-																			background-size: cover;
-																			}'; //Tarde"
-				else echo 'body, .lateral   { background-image: url("../fotos/bg/noite-azul.jpg");
-												background-repeat: no-repeat;
-												background-size: 100%;
-												background-size: cover;
-												}'; //Noite
+				if ($hora >= 6 && $hora < 12) echo "body, .lateral {background-color:rgb(243, 241, 189);}"; //Dia
+				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral {background-color:rgb(237, 122, 17);}"; //Tarde
+				else echo "body, .lateral {background-color:rgb(111, 111, 111);}"; //Noite
 			?>
 		</style>
 	
@@ -62,10 +50,12 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		<nav  class="container">
 		
 		<ul class="box">
-			
-			<div id="campoFoto" style="background: url(fotos/perfil/<?=$buscarEmail["fotocapa"];?>)">
-			<li class="userFoto">
-			<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
+			<div id="fotoCapa">
+				<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> 
+				
+					<div id="campoPerfil">
+						<li class="userFoto">
+				<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
 								<i class="fa fa-id-badge" style="font-size:48px"></i><?php
 										}else{?>								
 				<img id="fotoPerfil" src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?><p id="nomeUsu"><?=$buscarEmail["nome"]?></p>
@@ -79,6 +69,7 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			</a>
 			</li>
 			</div>
+				</div>
 			
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>

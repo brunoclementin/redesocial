@@ -87,3 +87,10 @@ p#texto {
 .fa-id-badge {
 	margin-left: 10px;
 }
+
+#perguntaFeed {
+	margin: 30px;
+	text-align: center;
+	border-radius: 10%;
+	
+}

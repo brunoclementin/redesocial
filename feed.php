@@ -56,8 +56,9 @@ $(function() {
 	?>
 	<div class="commentPerfil">
 		<div class="conteudoPost">
-			<h3 id="perguntatexto"><?=$post["perg"];?></h3>	
-			
+			<div id="perguntaFeed">
+			<h3 id="perguntatexto">"<?=$post["perg"];?>"</h3>	
+			</div>
 			<?php if($post["usuariofoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i><?php
 										}else{?>
 			<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/><?php }?>
