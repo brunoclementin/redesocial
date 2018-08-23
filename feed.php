@@ -3,6 +3,7 @@
 
 	//daos usadas
 	include("processos/dao.post.php");
+	include("processos/dao.messagelike.php");
 	$postDAO = new PostDAO();
 	$postslista = $postDAO->ListarPost();
 	$comentariolista = $postDAO->ListarComentario();
@@ -10,8 +11,8 @@
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	
 	//Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
@@ -46,7 +47,19 @@ $(function() {
 	
   
 });	
-
+	//Function para incrementar o sistema de Likes
+	$(function() {
+    $('.like').on('click', function() {
+        $(this).next('.likes').find('span').text(function() {
+            if (parseInt($(this).text()) === 0) {
+                return parseInt($(this).text() + 1);
+            }
+            else {
+                return 0;
+            }
+        });
+    });
+});
 </script>
 
 
@@ -66,10 +79,34 @@ $(function() {
 			
 			<p id="user"><b><?=$post["nome"];?></br></p>
 			<span id="dataPost"><?=$post["data"];?></span>
-			<p id="texto"><?=$post["texto"];?></p>
+			<div>
+			  <ul>
+			    <li>
+			      <p id="texto"><?=$post["texto"];?></p>
+			      <button class="like">Concordo</button>
+			      <span class="likes"><span>0</span> curtidas</span>
+			    </li>
+			  </ul>
+			</div>
 	
+			
+<div>
+<?php
+$msg_id=""; //Message id
+$uid=""; //Message user id.
+$q= LikesDAO;
+if(mysqli_num_rows($q)==0)
+{
+echo '<a href="#" class="like" id="like'.$msg_id.'" title="Unlike" rel="Unlike">Unlike</a>';
+ }
+else
+{
+echo '<a href="#" class="like" id="like'.$msg_id.'" title="Like" rel="Like">Like</a>';
+} ?>
+</div>
+
+			
 		<!--Utilizado CDN Font Awesome para aplicar icone-->	
-			<button style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>
 			<button style="font-size:14px" id="abre_comentario" 
 					onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
 			</button>
