@@ -52,7 +52,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		
 		<ul class="box">
 			<div id="fotoCapa">
-				<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> 
+				<!-- 
+Removi a foto de fundo da barra lateral por estetica mesmo, dependo da foto da pessoa fica ruim a leitura
+<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> --> 
 				
 					<div id="campoPerfil">
 						<li class="userFoto">
