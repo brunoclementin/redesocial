@@ -4,6 +4,7 @@
 	//daos usadas
 	include("processos/dao.post.php");
 	include("processos/dao.messagelike.php");
+	include("message_like_ajax.php");
 	$postDAO = new PostDAO();
 	$postslista = $postDAO->ListarPost();
 	$comentariolista = $postDAO->ListarComentario();
@@ -47,8 +48,9 @@ $(function() {
 	
   
 });	
+	
 	//Function para incrementar o sistema de Likes
-	$(function() {
+	/*$(function() {
     $('.like').on('click', function() {
         $(this).next('.likes').find('span').text(function() {
             if (parseInt($(this).text()) === 0) {
@@ -59,9 +61,76 @@ $(function() {
             }
         });
     });
+});*/
+			
+				//JavaScript para o sistema de Likes
+$('.like').on("click",function()
+{
+var ID = $(this).attr("id");
+var sid=ID.split("like");
+var New_ID=sid[1];
+var REL = $(this).attr("rel");
+var URL='dao.messagelike.php';
+var dataString = 'msg_id=' + New_ID +'&rel='+ REL;
+$.ajax({
+type: "POST",
+url: URL,
+data: dataString,
+cache: false,
+success: function(html){
+
+if(REL=='Like')
+{
+$("#youlike"+New_ID).slideDown('slow').prepend("<span id='you"+New_ID+"'><a href='#'>You</a> like this.</span>.");
+$("#likes"+New_ID).prepend("<span id='you"+New_ID+"'><a href='#'>You</a>, </span>");
+$('#'+ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
+}
+else
+{
+$("#youlike"+New_ID).slideUp('slow');
+$("#you"+New_ID).remove();
+$('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
+}
+
+}
 });
+	
 </script>
 
+<?php
+$msg_id=$row['msg_id'];
+$message=$row['message'];
+$username=$row['nome'];
+$uid=$row['id'];
+?>
+
+<?php
+if($like_count>0)
+{$query=mysqli_query($db,"SELECT U.nome,U.id FROM message_like M, users U WHERE U.id=M.id_fk AND M.msg_id_fk= ? LIMIT 3");
+?>
+<div class='likeUsers' id="likes<?php echo $msg_id ?>">
+<?php
+$new_like_count=$like_count-3;
+while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+{
+$like_uid=$row['id'];
+$likeusername=$row['nome'];
+if($like_uid==$uid)
+{
+echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
+}
+else
+{
+echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
+} 
+}
+echo 'and '.$new_like_count.' other friends like this';
+?>
+</div>
+<?php }
+else {
+echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
+} ?>
 
 <div id="post">
 	<?php 
@@ -79,6 +148,7 @@ $(function() {
 			
 			<p id="user"><b><?=$post["nome"];?></br></p>
 			<span id="dataPost"><?=$post["data"];?></span>
+			<!--Div do comentário com o botão de Likes-->
 			<div>
 			  <ul>
 			    <li>
@@ -88,14 +158,18 @@ $(function() {
 			    </li>
 			  </ul>
 			</div>
-	
-			
+
+			<!--Sistema de likes-->
 <div>
 <?php
-$msg_id=""; //Message id
-$uid=""; //Message user id.
-$q= LikesDAO;
-if(mysqli_num_rows($q)==0)
+$msg_id=$_POST['msg_id']; //Ver de onde vai buscar
+$uid=$_SESSION["usuario"]; //Message user id.
+
+			
+$dao = new LikesDAO();
+$like = $dao->detectID($uid, $msg_id);
+			
+if($like!=null)
 {
 echo '<a href="#" class="like" id="like'.$msg_id.'" title="Unlike" rel="Unlike">Unlike</a>';
  }
