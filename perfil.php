@@ -14,11 +14,13 @@ $usuariolista = $usuarioDAO->listarUsuario();
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#fotoCapaPerfil").mouseenter(function(){
-				$("#fotoTrocaTopo").fadeIn(1000);
+			$(".fotoCapa").mouseenter(function(){
+				$("#fotoTrocaTopo").fadeIn("slow"),
+				$(".infoUsu").fadeIn("slow");
 			});
-			$("#fotoCapaPerfil").mouseleave(function(){
-				$("#fotoTrocaTopo").fadeOut(1000);
+			$(".fotoCapa").mouseleave(function(){
+				$("#fotoTrocaTopo").fadeOut("slow"),
+				$(".infoUsu").fadeOut("slow");
 			});
 		});
 	</script>
@@ -40,8 +42,8 @@ $usuariolista = $usuarioDAO->listarUsuario();
 				<img id="fotoCapaPerfil" src="fotos/capa/fotocapa.png"/> 
 			<?php }}?>			
 			</div>
-			<div class="infoUsu">
-				<div id="infoSobre">
+			<div hidden="" class="infoUsu">
+				<div  id="infoSobre">
 					<form action="usuario_grava.php" method="post">
 						<p><?=$_SESSION["usuario.nome"]?></p>
 						<p>Eu sou bruno, tenho 24 anos, estudo programação e gosto muito de musica</p>
@@ -51,11 +53,10 @@ $usuariolista = $usuarioDAO->listarUsuario();
 			
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">		
 					<div>
-						<label for="foto">Insira sua foto</label>
-						<input type="file" name="arquivo" id="arquivo">  			
+						<label id="inputPerfilFoto-label" for="inputPerfilFoto">Insira sua foto</label>
+						<input onChange="form.submit()" type="file" name="arquivo" id="inputPerfilFoto">  			
 						<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
-					</div>		
-					<button type="submit">Salvar</button>	
+					</div>						
 				</form>
 			</div>
 		</section>

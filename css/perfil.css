@@ -68,7 +68,7 @@ div.infoUsu{
 	height: 150px;
 	position: absolute;
 	left: 50%;
-	margin-left: -397.5px;
+	margin-left: -396.5px;
 	background-color:rgba(255,255,255,0.5);
 	top: 275px;	
 	z-index: 2;
@@ -141,3 +141,21 @@ p#texto {
 
 
 
+
+#inputPerfilFoto {
+	width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#inputPerfilFoto-label {
+	color: #FFF;
+  background-color: #337AB7;
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
