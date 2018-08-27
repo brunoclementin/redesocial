@@ -12,13 +12,23 @@ $usuariolista = $usuarioDAO->listarUsuario();
 
 ?>
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#fotoCapaPerfil").mouseenter(function(){
+				$("#fotoTrocaTopo").fadeIn(1000);
+			});
+			$("#fotoCapaPerfil").mouseleave(function(){
+				$("#fotoTrocaTopo").fadeOut(1000);
+			});
+		});
+	</script>
 	<section class="perfil">	
 		<section id="infoPerfil">
 			<div class="fotoCapa">
-				<div id="fotoTrocaTopo">
+				<div hidden="" id="fotoTrocaTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">					
 					<input onChange="form.submit()" type="file" name="fotoCapa" id="inputFotoCapa"/>
-					<label for="inputFotoCapa" class="inputFotoCapa-label">Altere sua Capa</label>
+					<label  for="inputFotoCapa" class="inputFotoCapa-label">Altere sua Capa</label>
 					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />					
 				</form>
 			</div>
