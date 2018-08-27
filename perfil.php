@@ -17,9 +17,9 @@ $usuariolista = $usuarioDAO->listarUsuario();
 			<div class="fotoCapa">
 				<div id="fotoTrocaTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">					
-					<input type="file" name="fotoCapa" id="fotoCapa"/>
-					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />
-					<button type="submit">Salvar</button>
+					<input onChange="form.submit()" type="file" name="fotoCapa" id="inputFotoCapa"/>
+					<label for="inputFotoCapa" class="inputFotoCapa-label">Altere sua Capa</label>
+					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />					
 				</form>
 			</div>
 				<?php foreach($usuariolista as $usuario){

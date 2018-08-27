@@ -24,6 +24,22 @@ div.fotoCapa{
 	height: 100%;	
 	padding: 0;
 }
+#inputFotoCapa {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputFotoCapa-label{
+  color: #FFF;
+  background-color: #337AB7;
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 #fotoCapaPerfil{
 	position: relative;
