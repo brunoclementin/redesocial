@@ -15,12 +15,12 @@ $usuariolista = $usuarioDAO->listarUsuario();
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".fotoCapa").mouseenter(function(){
-				$("#fotoTrocaTopo").fadeIn("slow"),
-				$(".infoUsu").fadeIn("slow");
+				$("#fotoTrocaTopo").fadeIn("linear"),
+				$(".infoUsu").fadeIn("linear");
 			});
 			$(".fotoCapa").mouseleave(function(){
-				$("#fotoTrocaTopo").fadeOut("slow"),
-				$(".infoUsu").fadeOut("slow");
+				$("#fotoTrocaTopo").fadeOut("linear"),
+				$(".infoUsu").fadeOut("linear");
 			});
 		});
 	</script>
