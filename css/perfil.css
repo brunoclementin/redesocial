@@ -57,10 +57,13 @@ div.fotoCapa{
 #inputPerfilFoto-label {
   color: #FFF;
   background-color: #337AB7;
-  display: inline;
+  position: absolute;
+  display: inline-block;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  top: 46px;
+  width: 150px;
 }
 
 #fotoCapaPerfil{
@@ -161,3 +164,30 @@ p#texto {
 
 
 
+
+#btnEditarPerfil {
+	position: absolute;
+	display: inline-block;
+	margin-left: 725px;	
+	top: 61px;
+}
+
+.inputDivFotoPerfil {
+	margin-top: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.formInputFotoPerfil {
+	display: block;
+	margin-bottom: -25px;
+	position: absolute;
+}
+
+#descicaoUsuario {
+	margin-left: auto;
+	text-align: right;
+	margin-top: 0px;
+	width: 425px;
+}
