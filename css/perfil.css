@@ -56,21 +56,22 @@ div.fotoCapa{
 
 #inputPerfilFoto-label {
   position: absolute;
-  display: inline-block;
-  padding: 10px;
+  display: inline-block;  
   border-radius: 5px;
-  cursor: pointer;
-  top: -15px;
+  cursor: pointer;  
   max-width: 150px;
-  max-height: 200px;
+  min-height: 100%;
+  top: 0;
+	
 }
 
 #inputPerfilFoto-label img {
 	max-width: 150px;
-  	max-height: 400px;
+  	min-height: 100%;
 	border: solid 2px #F8F5F5;
-	display: inline-block;
-	
+	position: absolute;
+	margin-left: 0;
+		
 }
 
 #fotoCapaPerfil{
@@ -118,8 +119,10 @@ div.infoUsu{
 
 .formInputFotoPerfil {
 	display: block;
-	margin-bottom: -25px;
+	margin-top: 0;
+	top: 0;
 	position: absolute;
+	height: 100%;
 }
 
 #descicaoUsuario {
