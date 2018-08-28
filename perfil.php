@@ -49,7 +49,16 @@ $usuariolista = $usuarioDAO->listarUsuario();
 					</form>			
 				
 					<form class="formInputFotoPerfil" action="usuario_grava.php" method="post" enctype="multipart/form-data">			
-						<label id="inputPerfilFoto-label" for="inputPerfilFoto"><img src="fotos/perfil/06b779169c4828b39819624de59039df.jpg"></label>
+						<label id="inputPerfilFoto-label" for="inputPerfilFoto">
+							
+							<?php foreach($usuariolista as $usuario){
+						if($_SESSION["usuario"] == $usuario["id"] && $usuario["foto"] != null){?>
+							
+							<img src="fotos/perfil/<?=$usuario["foto"]?>">
+							<?php }else if ($_SESSION["usuario"] == $usuario["id"] && $usuario["foto"] == null){?>
+							<img src="fotos/perfil/06b779169c4828b39819624de59039df.jpg">
+							<?php }}?>
+								</label>
 						<input onChange="form.submit()" type="file" name="arquivo" id="inputPerfilFoto">  			
 						<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
 						<input id="btnEditarPerfil" type="button" name="editarPerfil" value="Editar Perfil">							
