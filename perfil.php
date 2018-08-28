@@ -44,14 +44,14 @@ $usuariolista = $usuarioDAO->listarUsuario();
 			</div>
 			<div hidden="" class="infoUsu">
 				<div  id="infoSobre">
-					<form action="usuario_grava.php" method="post">
+					<form id="descricaoUsuarioForm" action="usuario_grava.php" method="post">
 						<p id="nomeUsuario"><?=$_SESSION["usuario.nome"]?></p>
 						<p id="descicaoUsuario">Eu sou bruno, tenho 24 anos, estudo programação e gosto muito de musica</p>						
 					</form>			
 				
 				
 					<form class="formInputFotoPerfil" action="usuario_grava.php" method="post" enctype="multipart/form-data">			
-						<label id="inputPerfilFoto-label" for="inputPerfilFoto">Insira sua foto</label>
+						<label id="inputPerfilFoto-label" for="inputPerfilFoto"><img src="fotos/perfil/06b779169c4828b39819624de59039df.jpg"></label>
 						<input onChange="form.submit()" type="file" name="arquivo" id="inputPerfilFoto">  			
 						<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
 						<input id="btnEditarPerfil" type="button" name="editarPerfil" value="Editar Perfil">							

@@ -55,15 +55,22 @@ div.fotoCapa{
 }
 
 #inputPerfilFoto-label {
-  color: #FFF;
-  background-color: #337AB7;
   position: absolute;
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  top: 46px;
-  width: 150px;
+  top: -15px;
+  max-width: 150px;
+  max-height: 200px;
+}
+
+#inputPerfilFoto-label img {
+	max-width: 150px;
+  	max-height: 400px;
+	border: solid 2px #F8F5F5;
+	display: inline-block;
+	
 }
 
 #fotoCapaPerfil{
@@ -94,6 +101,34 @@ div.infoUsu{
 	top: 275px;	
 	z-index: 2;
 }
+
+#btnEditarPerfil {
+	position: absolute;
+	display: inline-block;
+	margin-left: 725px;	
+	top: 61px;
+}
+
+.inputDivFotoPerfil {
+	margin-top: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.formInputFotoPerfil {
+	display: block;
+	margin-bottom: -25px;
+	position: absolute;
+}
+
+#descicaoUsuario {
+	margin-left: auto;
+	text-align: justify;
+	margin-top: 0px;
+	width: 425px;
+}
+
 
 
 #campoFotoFeed {
@@ -165,29 +200,12 @@ p#texto {
 
 
 
-#btnEditarPerfil {
-	position: absolute;
-	display: inline-block;
-	margin-left: 725px;	
-	top: 61px;
-}
 
-.inputDivFotoPerfil {
-	margin-top: 0;
-	width: 100%;
-	height: 100%;
-	display: block;
-}
-
-.formInputFotoPerfil {
-	display: block;
-	margin-bottom: -25px;
-	position: absolute;
-}
-
-#descicaoUsuario {
-	margin-left: auto;
-	text-align: justify;
-	margin-top: 0px;
+#descricaoUsuarioForm {
 	width: 425px;
+	
+	display: block;
+	position: relative;
+	right: 0;
+	margin-left: auto;
 }
