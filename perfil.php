@@ -12,14 +12,26 @@ $usuariolista = $usuarioDAO->listarUsuario();
 
 ?>
 	<link rel="stylesheet" type="text/css" href="css/perfil.css">
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".fotoCapa").mouseenter(function(){
+				$("#fotoTrocaTopo").fadeIn("linear"),
+				$(".infoUsu").fadeIn("linear");
+			});
+			$(".fotoCapa").mouseleave(function(){
+				$("#fotoTrocaTopo").fadeOut("linear"),
+				$(".infoUsu").fadeOut("linear");
+			});
+		});
+	</script>
 	<section class="perfil">	
 		<section id="infoPerfil">
 			<div class="fotoCapa">
-				<div id="fotoTrocaTopo">
+				<div hidden="" id="fotoTrocaTopo">
 				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">					
-					<input type="file" name="fotoCapa" id="fotoCapa"/>
-					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />
-					<button type="submit">Salvar</button>
+					<input onChange="form.submit()" type="file" name="fotoCapa" id="inputFotoCapa"/>
+					<label  for="inputFotoCapa" class="inputFotoCapa-label">Altere sua Capa</label>
+					<input type="hidden" name="usercapa" value="<?=$_SESSION["usuario"]?>" />					
 				</form>
 			</div>
 				<?php foreach($usuariolista as $usuario){
@@ -27,27 +39,32 @@ $usuariolista = $usuarioDAO->listarUsuario();
 				<img id="fotoCapaPerfil" src="fotos/capa/<?=$usuario["fotocapa"]?>"/>				
 			<?php }else if ($_SESSION["usuario"] == $usuario["id"] && $usuario["fotocapa"] == null){?>
 				
-				<i class="fa fa-image" style="font-size:500px;color:aqua;margin-top: -33px;"></i> 
+				<img id="fotoCapaPerfil" src="fotos/capa/fotocapa.png"/> 
 			<?php }}?>			
 			</div>
-			<div class="infoUsu">
-				<div id="infoSobre">
-					<form action="usuario_grava.php" method="post">
-						<p><?=$_SESSION["usuario.nome"]?></p>
-						<p>Eu sou bruno, tenho 24 anos, estudo programação e gosto muito de musica</p>
-						<input type="button" name="editarPergil" value="Editar Perfil">
+			<div hidden="" class="infoUsu">				
+					<form id="descricaoUsuarioForm" action="usuario_grava.php" method="post">
+						<p id="nomeUsuario"><?=$_SESSION["usuario.nome"]?></p>
+						<p id="descicaoUsuario">Eu sou bruno, tenho 24 anos, estudo programação e gosto muito de musica</p>						
 					</form>			
-				</div>
-			
-				<form action="usuario_grava.php" method="post" enctype="multipart/form-data">		
-					<div>
-						<label for="foto">Insira sua foto</label>
-						<input type="file" name="arquivo" id="arquivo">  			
+				
+					<form class="formInputFotoPerfil" action="usuario_grava.php" method="post" enctype="multipart/form-data">			
+						<label id="inputPerfilFoto-label" for="inputPerfilFoto">
+							
+							<?php foreach($usuariolista as $usuario){
+						if($_SESSION["usuario"] == $usuario["id"] && $usuario["foto"] != null){?>
+							
+							<img src="fotos/perfil/<?=$usuario["foto"]?>">
+							<?php }else if ($_SESSION["usuario"] == $usuario["id"] && $usuario["foto"] == null){?>
+							<img src="fotos/perfil/06b779169c4828b39819624de59039df.jpg">
+							<?php }}?>
+								</label>
+						<input onChange="form.submit()" type="file" name="arquivo" id="inputPerfilFoto">  			
 						<input type="hidden" name="usuario" value="<?=$_SESSION["usuario"]?>" />
-					</div>		
-					<button type="submit">Salvar</button>	
-				</form>
-			</div>
+						<input id="btnEditarPerfil" type="button" name="editarPerfil" value="Editar Perfil">							
+					</form>					
+				</div>
+				
 		</section>
 		<section class="postUsuario">
 			<?php 

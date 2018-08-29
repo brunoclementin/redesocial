@@ -37,9 +37,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<?php
 				date_default_timezone_set("America/Sao_Paulo"); //Lista em: http://www.php.net/manual/pt_BR/timezones.php
 				$hora = date("G");
-				if ($hora >= 6 && $hora < 12) echo "body, .lateral {background-color:rgb(243, 241, 189);}"; //Dia
+				if ($hora >= 6 && $hora < 12) echo "body, .lateral {background-color:rgb(61,103, 255);}"; //Dia
 				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral {background-color:rgb(237, 122, 17);}"; //Tarde
-				else echo "body, .lateral {background-color:rgb(111, 111, 111);}"; //Noite
+				else echo "body, .lateral {background-color:rgb(147,112,219);}"; //Noite
 			?>
 		</style>
 	
@@ -52,7 +52,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		
 		<ul class="box">
 			<div id="fotoCapa">
-				<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> 
+				<!-- 
+Removi a foto de fundo da barra lateral por estetica mesmo, dependo da foto da pessoa fica ruim a leitura
+<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> --> 
 				
 					<div id="campoPerfil">
 						<li class="userFoto">
