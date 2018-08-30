@@ -100,30 +100,30 @@ $('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
 
 <?php
 $msg_id=$_POST['msg_id'];
-$message=$row['message'];
-$username=$_SESSION["nome"];
-$uid=$_SESSION["id"];
+$message=$_POST['id_post'];
+$username=$_SESSION["usuario.nome"];
+$uid=$_SESSION["usuario"];
 ?>
 
 <?php
 if($like_count>0)
-{$query=$dao->detailsWhoLiked($users, $msg);
+{$query=$dao->detailsWhoLiked($msg_id);
 ?>
 <div class='likeUsers' id="likes<?php echo $msg_id ?>">
 <?php
 $new_like_count=$like_count-3;
-while($row=$dao(query))
+foreach($row in &$query)  
 {
-$like_uid=$row['id'];
-$likeusername=$row['nome'];
-if($like_uid==$uid)
-{
-echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
-}
-else
-{
-echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
-} 
+	$like_uid=$row['id'];
+	$likeusername=$row['nome'];
+	if($like_uid==$uid)
+	{
+	echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
+	}
+	else
+	{
+	echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
+	} 
 }
 echo 'and '.$new_like_count.' other friends like this';
 ?>
@@ -163,8 +163,8 @@ echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
 			<!--Sistema de likes-->
 <div>
 <?php
-$msg_id=$_POST['msg_id']; //Ver de onde vai buscar
-$uid=$_SESSION["usuario"]; //Message user id.
+
+
 
 			
 $dao = new LikesDAO();

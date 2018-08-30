@@ -7,12 +7,12 @@
 		public $Mensagem = "";
 		
 		//To show Like or Unlike from message_like table based on message ID.
-		function detectID($msg){
+		function detectID($msgID){
 			$comando = $this->prepare("SELECT like_id FROM message_like 
 										WHERE id_fk = ? and msg_id_fk = ? ");
 			//$dados = array($idfk, $msg);
 			
-			$comando->execute($msg);
+			$comando->execute($msgID);
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
 			$resultado= $comando->fetchAll();
 			
@@ -84,10 +84,10 @@
 		}
 
 		
-		function detailsWhoLiked($users, $msg){  //Pegar Nome e ID do usuário que curtiu
+		function detailsWhoLiked($msg){  //Pegar Nome e ID do usuário que curtiu
 			$comando = $this->prepare("SELECT U.nome,U.id FROM message_like M, users U 
 										WHERE U.id=M.id_fk AND M.msg_id_fk= ? LIMIT 3");
-			$dados = array($users, $msg);
+			$dados = array($msg);
 			
 			$comando->execute($dados);
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
