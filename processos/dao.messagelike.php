@@ -26,6 +26,25 @@
 		}
 
 		
+		function buscarIdNome ($users){
+			$resultado = $this->query("SELECT * FROM users WHERE id = ?, nome = ?");
+				$resultado->setFetchMode(PDO::FETCH_ASSOC);
+				$nomeID = $resultado->fetchAll();
+			
+				return $nomeID;
+		}
+		
+		
+		
+		function buscarMessageId ($users){
+			$resultado = $this->query("SELECT * FROM messages WHERE msg_id = ?, message = ?");
+				$resultado->setFetchMode(PDO::FETCH_ASSOC);
+				$messageID = $resultado->fetchAll();
+			
+				return $messageID;
+		}
+		
+		
 		function insertID($msg){ //Insere os IDs na tabela message_like
 			$comando = $this->prepare("INSERT INTO message_like (msg_id_fk,id_fk) VALUES(?,?)");
 			try	{$comando->execute($msg);

@@ -93,25 +93,26 @@ $('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
 }
 
 }
-});
+});   
 	
 </script>
 
+
 <?php
-$msg_id=$row['msg_id'];
+$msg_id=$_POST['msg_id'];
 $message=$row['message'];
-$username=$row['nome'];
-$uid=$row['id'];
+$username=$_SESSION["nome"];
+$uid=$_SESSION["id"];
 ?>
 
 <?php
 if($like_count>0)
-{$query=mysqli_query($db,"SELECT U.nome,U.id FROM message_like M, users U WHERE U.id=M.id_fk AND M.msg_id_fk= ? LIMIT 3");
+{$query=$dao->detailsWhoLiked($users, $msg);
 ?>
 <div class='likeUsers' id="likes<?php echo $msg_id ?>">
 <?php
 $new_like_count=$like_count-3;
-while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+while($row=$dao(query))
 {
 $like_uid=$row['id'];
 $likeusername=$row['nome'];
