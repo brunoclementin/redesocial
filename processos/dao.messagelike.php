@@ -6,13 +6,31 @@
 	class LikesDAO extends Conexao{
 		public $Mensagem = "";
 		
+		function query(){
+			$comando = $this->prepare("SELECT U.username, U.uid, M.msg_id, M.message FROM users U, messages M 
+										WHERE U.uid=M.uid_fk and U.uid='?'");
+			$comando->setFetchMode(PDO::FETCH_ASSOC);
+			$resultado = $comando->fetchAll();
+			
+			
+			return $resultado;
+		}
+		
+		
 		//To show Like or Unlike from message_like table based on message ID.
-		function detectID($msgID){
+		function detectID($msgId){
 			$comando = $this->prepare("SELECT like_id FROM message_like 
 										WHERE id_fk = ? and msg_id_fk = ? ");
-			//$dados = array($idfk, $msg);
+			try	{$comando->execute($msgId);
+				return true;
+			}
+			catch(Exception $e){
+				$this->Mensagem = $e->getMessage();
+				return false;
+			}
+			//$dados = array($idfk, $msg);	
 			
-			$comando->execute($msgID);
+			//$comando->execute($msgID);
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
 			$resultado= $comando->fetchAll();
 			
@@ -70,11 +88,12 @@
 		}
 
 		
-		function removeLike($msg){ //Remover o Like caso ja tiver curtido
+		function removeLike($msg, $idfk){ //Remover o Like caso ja tiver curtido
 			$comando = $this->prepare("DELETE FROM message_like WHERE msg_id_fk= ? and id_fk= ? ");
 			//$dados = array($msg, $idfk);
 			try{
-				$comando->execute($msg);
+				$dados = array($msg, $idfk)  //quantia de parametros vao de acordo com os valores
+				$comando->execute($dados); //execute somente recebe vetor $...
 				return true;
 			}
 			catch(Exception $e){

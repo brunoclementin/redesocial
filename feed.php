@@ -93,26 +93,36 @@ $('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
 }
 
 }
+})
 });   
 	
 </script>
 
 
-<?php
-$msg_id=$_POST['msg_id'];
-$message=$_POST['id_post'];
-$username=$_SESSION["usuario.nome"];
-$uid=$_SESSION["usuario"];
-?>
+	<?php
+
+	$dao = new LikesDAO();
+	$resultado = $dao->query();
+
+	foreach($resultado as $row)
+		{
+		$msg_id=$row['msg_id'];
+		$message=$row['message'];
+		$username=$_SESSION["usuario.nome"];
+		$uid=$_SESSION["usuario"];
+		}
+	?>
 
 <?php
+$like_count = $row["like_count"];
+
 if($like_count>0)
 {$query=$dao->detailsWhoLiked($msg_id);
 ?>
 <div class='likeUsers' id="likes<?php echo $msg_id ?>">
 <?php
 $new_like_count=$like_count-3;
-foreach($row in &$query)  
+foreach($query as $row)  
 {
 	$like_uid=$row['id'];
 	$likeusername=$row['nome'];
@@ -168,7 +178,7 @@ echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
 
 			
 $dao = new LikesDAO();
-$like = $dao->detectID($uid, $msg_id);
+$like = $dao->detectID($msg_id);
 			
 if($like!=null)
 {
