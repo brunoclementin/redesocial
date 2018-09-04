@@ -117,12 +117,12 @@ $('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
 $like_count = $row["like_count"];
 
 if($like_count>0)
-{$query=$dao->detailsWhoLiked($msg_id);
+{$resultado=$dao->detailsWhoLiked($msg_id);
 ?>
 <div class='likeUsers' id="likes<?php echo $msg_id ?>">
 <?php
 $new_like_count=$like_count-3;
-foreach($query as $row)  
+foreach($resultado as $row)  
 {
 	$like_uid=$row['id'];
 	$likeusername=$row['nome'];

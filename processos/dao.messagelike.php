@@ -18,10 +18,11 @@
 		
 		
 		//To show Like or Unlike from message_like table based on message ID.
-		function detectID($msgId){
+		function detectID($idfk, $msgidfk){
 			$comando = $this->prepare("SELECT like_id FROM message_like 
 										WHERE id_fk = ? and msg_id_fk = ? ");
-			try	{$comando->execute($msgId);
+			$dados = array($idfk, $msgidfk);
+			try	{$comando->execute($dados);
 				return true;
 			}
 			catch(Exception $e){
@@ -44,7 +45,7 @@
 		}
 
 		
-		function buscarIdNome ($users){
+		function buscarIdNome (){
 			$resultado = $this->query("SELECT * FROM users WHERE id = ?, nome = ?");
 				$resultado->setFetchMode(PDO::FETCH_ASSOC);
 				$nomeID = $resultado->fetchAll();
@@ -54,7 +55,7 @@
 		
 		
 		
-		function buscarMessageId ($users){
+		function buscarMessageId (){
 			$resultado = $this->query("SELECT * FROM messages WHERE msg_id = ?, message = ?");
 				$resultado->setFetchMode(PDO::FETCH_ASSOC);
 				$messageID = $resultado->fetchAll();
@@ -63,9 +64,10 @@
 		}
 		
 		
-		function insertID($msg){ //Insere os IDs na tabela message_like
+		function insertID($msg, $idfk){ //Insere os IDs na tabela message_like
 			$comando = $this->prepare("INSERT INTO message_like (msg_id_fk,id_fk) VALUES(?,?)");
-			try	{$comando->execute($msg);
+			$dados = array($msg, $idfk);
+			try	{$comando->execute($dados);
 				return true;
 			}
 			catch(Exception $e){
@@ -90,9 +92,8 @@
 		
 		function removeLike($msg, $idfk){ //Remover o Like caso ja tiver curtido
 			$comando = $this->prepare("DELETE FROM message_like WHERE msg_id_fk= ? and id_fk= ? ");
-			//$dados = array($msg, $idfk);
-			try{
-				$dados = array($msg, $idfk)  //quantia de parametros vao de acordo com os valores
+			$dados = array($msg, $idfk); //quantia de parametros vao de acordo com os valores
+			try{  
 				$comando->execute($dados); //execute somente recebe vetor $...
 				return true;
 			}
