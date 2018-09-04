@@ -35,11 +35,11 @@ body {
 				transition: all 0.5s ease;
 	font-size:0.8em;
 	background:rgb(44,62,80);
-	background-image: -moz-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
+/*	background-image: -moz-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
      background-image: -webkit-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
       background-image: -o-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219) );
        background-image: -ms-linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
-        background-image: linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219));
+        background-image: linear-gradient(135deg, rgb(75,0,130), rgb(147,112,219)); */
 	height:100%;
 	overflow:hidden;
 	width:370px; 
@@ -104,29 +104,30 @@ left:-500px
 					transition: all 0.5s ease;
 	}
 
-
-#campoFoto {
-	height: 76px;
-	width: 276px;
-	margin: auto;
-	display: block;
-}
-
-.userFoto {
-	margin: 100%;
-	height: 100%;
-}
-
 #fotoCapa {
-	display: inline-block;
-	
+	position: relative;
+	width: 276px;
+	height: 76px;
 }
 
 #capaFundo {
-	height: 76px;
-	width: 276px;
-	margin: auto;
-	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#campoPerfil {
+	position: absolute;
+	left: 45%; 
+	margin-left: -120px; 
+	top: 80%; 
+	margin-top: -61px; 
+	width:100%; 
+	height: 100%;
+}
+
+.userFoto {
+	width: 100%;
+	height: 100%;
 }
 
 #fotoPerfil {
@@ -146,9 +147,7 @@ left:-500px
 }
 
 a #nomeUsu {
-	display: inline-block;
-	
-	
+	display: inline-block;	
 }
 
 

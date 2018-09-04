@@ -164,7 +164,11 @@
 	$rsspcworld = new SimpleXmlElement($feedpcworld);			
 	$pcworld = $rsspcworld->channel->item[0];	
 	$descpcworld = $pcworld->description;
-	$imgpcworld = $pcworld->enclosure->attributes()->url;
+	//if($pcworld->enclosure->attributes()->url){
+	//	$imgpcworld = $pcworld->enclosure->attributes()->url;
+	//}else{
+	//$imgpcworld = "";}
+	
 ?>
 
 <?php

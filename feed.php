@@ -3,6 +3,8 @@
 
 	//daos usadas
 	include("processos/dao.post.php");
+	include("processos/dao.messagelike.php");
+	include("message_like_ajax.php");
 	$postDAO = new PostDAO();
 	$postslista = $postDAO->ListarPost();
 	$comentariolista = $postDAO->ListarComentario();
@@ -10,8 +12,8 @@
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	
 	//Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
@@ -46,9 +48,100 @@ $(function() {
 	
   
 });	
+	
+	//Function para incrementar o sistema de Likes
+	/*$(function() {
+    $('.like').on('click', function() {
+        $(this).next('.likes').find('span').text(function() {
+            if (parseInt($(this).text()) === 0) {
+                return parseInt($(this).text() + 1);
+            }
+            else {
+                return 0;
+            }
+        });
+    });
+});*/
+			
+				//JavaScript para o sistema de Likes
+$('.like').on("click",function()
+{
+var ID = $(this).attr("id");
+var sid=ID.split("like");
+var New_ID=sid[1];
+var REL = $(this).attr("rel");
+var URL='dao.messagelike.php';
+var dataString = 'msg_id=' + New_ID +'&rel='+ REL;
+$.ajax({
+type: "POST",
+url: URL,
+data: dataString,
+cache: false,
+success: function(html){
 
+if(REL=='Like')
+{
+$("#youlike"+New_ID).slideDown('slow').prepend("<span id='you"+New_ID+"'><a href='#'>You</a> like this.</span>.");
+$("#likes"+New_ID).prepend("<span id='you"+New_ID+"'><a href='#'>You</a>, </span>");
+$('#'+ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
+}
+else
+{
+$("#youlike"+New_ID).slideUp('slow');
+$("#you"+New_ID).remove();
+$('#'+ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
+}
+
+}
+})
+});   
+	
 </script>
 
+
+	<?php
+
+	$dao = new LikesDAO();
+	$resultado = $dao->query();
+
+	foreach($resultado as $row)
+		{
+		$msg_id=$row['msg_id'];
+		$message=$row['message'];
+		$username=$_SESSION["usuario.nome"];
+		$uid=$_SESSION["usuario"];
+		}
+	?>
+
+<?php
+$like_count = $row["like_count"];
+
+if($like_count>0)
+{$query=$dao->detailsWhoLiked($msg_id);
+?>
+<div class='likeUsers' id="likes<?php echo $msg_id ?>">
+<?php
+$new_like_count=$like_count-3;
+foreach($query as $row)  
+{
+	$like_uid=$row['id'];
+	$likeusername=$row['nome'];
+	if($like_uid==$uid)
+	{
+	echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
+	}
+	else
+	{
+	echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
+	} 
+}
+echo 'and '.$new_like_count.' other friends like this';
+?>
+</div>
+<?php }
+else {
+echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
+} ?>
 
 <div id="post">
 	<?php 
@@ -56,8 +149,9 @@ $(function() {
 	?>
 	<div class="commentPerfil">
 		<div class="conteudoPost">
-			<h3 id="perguntatexto"><?=$post["perg"];?></h3>	
-			
+			<div id="perguntaFeed">
+			<h3 id="perguntatexto">"<?=$post["perg"];?>"</h3>	
+			</div>
 			<?php if($post["usuariofoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i><?php
 										}else{?>
 			<img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>"/><?php }?>
@@ -65,10 +159,39 @@ $(function() {
 			
 			<p id="user"><b><?=$post["nome"];?></br></p>
 			<span id="dataPost"><?=$post["data"];?></span>
-			<p id="texto"><?=$post["texto"];?></p>
-	
+			<!--Div do comentário com o botão de Likes-->
+			<div>
+			  <ul>
+			    <li>
+			      <p id="texto"><?=$post["texto"];?></p>
+			      <button class="like">Concordo</button>
+			      <span class="likes"><span>0</span> curtidas</span>
+			    </li>
+			  </ul>
+			</div>
+
+			<!--Sistema de likes-->
+<div>
+<?php
+
+
+
+			
+$dao = new LikesDAO();
+$like = $dao->detectID($msg_id);
+			
+if($like!=null)
+{
+echo '<a href="#" class="like" id="like'.$msg_id.'" title="Unlike" rel="Unlike">Unlike</a>';
+ }
+else
+{
+echo '<a href="#" class="like" id="like'.$msg_id.'" title="Like" rel="Like">Like</a>';
+} ?>
+</div>
+
+			
 		<!--Utilizado CDN Font Awesome para aplicar icone-->	
-			<button style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>
 			<button style="font-size:14px" id="abre_comentario" 
 					onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
 			</button>

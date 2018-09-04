@@ -17,7 +17,8 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 <meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/navbar.css" /> -->
-	<link rel="stylesheet" type="text/css" href="css/menulateral.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/menulateral.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/main_footer.css"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	
 			<!-- Alternação de BG conforme o horário, JS Method
@@ -36,21 +37,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<?php
 				date_default_timezone_set("America/Sao_Paulo"); //Lista em: http://www.php.net/manual/pt_BR/timezones.php
 				$hora = date("G");
-				if ($hora >= 6 && $hora < 12) echo 'body, .lateral { background-image: url("../fotos/bg/manha.jpg");
-																		background-repeat: no-repeat;
-																		background-size: 100%;
-																		background-size: cover;
-																		}'; //Dia
-				elseif ($hora >= 12 && $hora < 19) echo 'body, .lateral {	background-image: url("../fotos/bg/tarde.jpg");
-																			background-repeat: no-repeat;
-																			background-size: 100%;
-																			background-size: cover;
-																			}'; //Tarde"
-				else echo 'body, .lateral   { background-image: url("../fotos/bg/noite-azul.jpg");
-												background-repeat: no-repeat;
-												background-size: 100%;
-												background-size: cover;
-												}'; //Noite
+				if ($hora >= 6 && $hora < 12) echo "body, .lateral {background-color:rgb(61,103, 255);}"; //Dia
+				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral {background-color:rgb(237, 122, 17);}"; //Tarde
+				else echo "body, .lateral {background-color:rgb(147,112,219);}"; //Noite
 			?>
 		</style>
 	
@@ -62,10 +51,14 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 		<nav  class="container">
 		
 		<ul class="box">
-			
-			<div id="campoFoto" style="background: url(fotos/perfil/<?=$buscarEmail["fotocapa"];?>)">
-			<li class="userFoto">
-			<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
+			<div id="fotoCapa">
+				<!-- 
+Removi a foto de fundo da barra lateral por estetica mesmo, dependo da foto da pessoa fica ruim a leitura
+<img id="capaFundo" src="fotos/capa/<?=$buscarEmail["fotocapa"]?>"/> --> 
+				
+					<div id="campoPerfil">
+						<li class="userFoto">
+				<a href="perfil.php"><?php if($buscarEmail["foto"] == null){?>
 								<i class="fa fa-id-badge" style="font-size:48px"></i><?php
 										}else{?>								
 				<img id="fotoPerfil" src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?><p id="nomeUsu"><?=$buscarEmail["nome"]?></p>
@@ -79,6 +72,7 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			</a>
 			</li>
 			</div>
+				</div>
 			
 			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>

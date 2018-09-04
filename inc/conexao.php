@@ -26,3 +26,9 @@ class Conexao extends PDO {
 	}
 }
 ?> 
+
+
+ <?php
+
+$db = new Conexao;
+?>

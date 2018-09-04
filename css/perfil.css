@@ -20,20 +20,69 @@ body {
 }
 
 div.fotoCapa{
-	width: 100%;
-	height: 100%;	
+	position: relative;
+	width: 841px;
+	height: 425px;	
 	padding: 0;
+	max-height: 425px;
+	left: 50%;
+	margin-left: -425px;
+}
+#inputFotoCapa {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputFotoCapa-label{
+  color: #FFF;
+  background-color: #337AB7;
+  display: inline;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#inputPerfilFoto {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#inputPerfilFoto-label {
+  position: absolute;
+  display: inline-block;  
+  border-radius: 5px;
+  cursor: pointer;  
+  max-width: 150px;
+  min-height: 100%;
+  top: 0;
+	
+}
+
+#inputPerfilFoto-label img {
+	max-width: 150px;
+  	min-height: 100%;
+	border: solid 2px #F8F5F5;
+	position: absolute;
+	margin-left: 0;
+		
 }
 
 #fotoCapaPerfil{
 	position: relative;
 	margin-top: 0;	
-	min-width: 851px;
-	min-height: 425px;
+	min-width: 100%;
+	min-height: 100%;
 	max-width: 50%;
 	max-height: 425px;
 	left: 50%;
-	margin-left: -425px;
+	margin-left: -420px;
 	z-index: -1;
 }
 #fotoTrocaTopo{
@@ -44,15 +93,45 @@ div.fotoCapa{
 	width: 851px;
 }
 div.infoUsu{
-	width: 851px;
+	width: 841px;
 	height: 150px;
 	position: absolute;
 	left: 50%;
-	margin-left: -397.5px;
+	margin-left: -396.5px;
 	background-color:rgba(255,255,255,0.5);
 	top: 275px;	
 	z-index: 2;
 }
+
+#btnEditarPerfil {
+	position: absolute;
+	display: inline-block;
+	margin-left: 725px;	
+	top: 61px;
+}
+
+.inputDivFotoPerfil {
+	margin-top: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.formInputFotoPerfil {
+	display: block;
+	margin-top: 0;
+	top: 0;
+	position: absolute;
+	height: 100%;
+}
+
+#descicaoUsuario {
+	margin-left: auto;
+	text-align: justify;
+	margin-top: 0px;
+	width: 425px;
+}
+
 
 
 #campoFotoFeed {
@@ -121,3 +200,15 @@ p#texto {
 
 
 
+
+
+
+
+#descricaoUsuarioForm {
+	width: 425px;
+	
+	display: block;
+	position: relative;
+	right: 0;
+	margin-left: auto;
+}
