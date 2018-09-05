@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 21-Ago-2018 às 23:02
+-- Data de Criação: 05-Set-2018 às 16:55
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `id_post` int(11) NOT NULL,
   `data` datetime NOT NULL,
   PRIMARY KEY (`id_comentario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `comentarios`
@@ -47,7 +47,45 @@ INSERT INTO `comentarios` (`id_comentario`, `textocomentario`, `id_usuario`, `no
 (2, 'sdfasdfaf', 6, 'bruno', 10, '2018-08-04 16:16:34'),
 (3, 'asdasda', 6, 'bruno', 10, '2018-08-04 17:05:52'),
 (4, 'asdafasd', 7, 'bruno', 10, '2018-08-05 13:27:17'),
-(5, 'quashflakslaksf', 10, 'Brisa', 10, '2018-08-13 14:30:01');
+(5, 'quashflakslaksf', 10, 'Brisa', 10, '2018-08-13 14:30:01'),
+(6, 'k k k', 11, 'CPM 22', 10, '2018-08-16 14:31:49'),
+(7, '', 11, 'CPM 22', 13, '2018-08-22 16:25:59'),
+(8, 'xxx', 11, 'CPM 22', 13, '2018-08-22 16:26:16'),
+(9, '', 11, 'CPM 22', 13, '2018-08-22 16:26:23'),
+(10, '', 11, 'CPM 22', 13, '2018-08-22 16:26:29'),
+(11, '', 11, 'CPM 22', 13, '2018-08-24 14:56:53');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `messages`
+--
+
+CREATE TABLE IF NOT EXISTS `messages` (
+  `msg_id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` varchar(200) NOT NULL,
+  `id_fk` int(11) NOT NULL,
+  `like_count` int(11) DEFAULT NULL,
+  `created` int(11) DEFAULT NULL,
+  PRIMARY KEY (`msg_id`),
+  KEY `id_fk` (`id_fk`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `message_like`
+--
+
+CREATE TABLE IF NOT EXISTS `message_like` (
+  `like_id` int(11) NOT NULL AUTO_INCREMENT,
+  `msg_id_fk` int(11) DEFAULT NULL,
+  `id_fk` int(11) NOT NULL,
+  `created` int(11) NOT NULL,
+  PRIMARY KEY (`like_id`),
+  KEY `id_fk` (`id_fk`),
+  KEY `msg_id_fk` (`msg_id_fk`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -117,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fotocapa` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `users`
@@ -127,17 +165,29 @@ INSERT INTO `users` (`id`, `nome`, `email`, `password`, `data`, `foto`, `fotocap
 (1, 'bruno', 'email@email.com', '1234', '2018-07-07 00:00:00', '', ''),
 (2, 'bruno', 'email@email.com2', '123', '2018-07-15 14:07:04', '', ''),
 (5, 'bruno', 'email@email.com3', '123', '2018-07-16 17:39:41', '', ''),
-(6, 'bruno', 'email@email.com4', '202cb962ac59075b964b07152d234b70', '2018-07-17 10:46:19', '18fac4f287e769cafd390160bbcd2c1f.jpg', '9951bda2f35db33363ce9b7406c19ee3.jpg'),
+(6, 'bruno', 'email@email.com4', '202cb962ac59075b964b07152d234b70', '2018-07-17 10:46:19', '18fac4f287e769cafd390160bbcd2c1f.jpg', '06db62e9b21e6fc8c5c5237de8e413ee.png'),
 (7, 'bruno', 'email@email.com7', '202cb962ac59075b964b07152d234b70', '2018-07-21 12:02:02', '', ''),
 (8, 'bruno', 'email@email11.com', '202cb962ac59075b964b07152d234b70', '2018-07-24 19:27:30', '', ''),
 (9, 'Jarara', 'email@email1', '202cb962ac59075b964b07152d234b70', '2018-08-06 13:05:22', '', ''),
 (10, 'Brisa', 'brisa@brisa', '202cb962ac59075b964b07152d234b70', '2018-08-11 18:43:09', '5067a68872ae5e03de95744515276f0e.jpg', '56c5efba8c0a19abab75566eb4a5b2a3.jpg'),
-(11, 'brisa2', 'brisa@brisa2', '202cb962ac59075b964b07152d234b70', '2018-08-16 11:36:56', '', '86c8e96f03bc1659ed30b48d12be9b0a.png'),
-(12, 'brisa3', 'brisa@brisa3', '202cb962ac59075b964b07152d234b70', '2018-08-18 10:31:37', '', '');
+(11, 'CPM 22', 'cpm22@gmail.com', 'cb42e130d1471239a27fca6228094f0e', '2018-08-16 14:07:00', '6e75b49d1faf9db72eecad5634a2feae.jfif', 'a5d3202847baee19462a13906e110f31.jpg');
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`id_fk`) REFERENCES `users` (`id`);
+
+--
+-- Limitadores para a tabela `message_like`
+--
+ALTER TABLE `message_like`
+  ADD CONSTRAINT `message_like_ibfk_1` FOREIGN KEY (`id_fk`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `message_like_ibfk_2` FOREIGN KEY (`msg_id_fk`) REFERENCES `messages` (`msg_id`);
 
 --
 -- Limitadores para a tabela `posts`

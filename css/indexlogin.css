@@ -110,6 +110,11 @@ form input.btn:hover{
 #registrar{
 	display: none;
 }
+
+/*#login{
+	display: none;
+}*/
+
 form input.field:focus{
 	border-color: #001f3f;
 	
@@ -147,4 +152,22 @@ form input.field:focus{
 	background: #000;
 	opacity: 0.8;
 	z-index: -1;
+}
+
+main {
+    min-height: 100vh;
+    min-height: -webkit-calc(100vh - 100px);
+    min-height:    -moz-calc(100vh - 100px);
+    min-height:         calc(100vh - 100px);
+}
+
+#footer {
+	display: block;
+  	min-height: 100px;
+  	width: 100%;
+}
+
+#publicar{
+	display: block;
+	text-align: center;
 }

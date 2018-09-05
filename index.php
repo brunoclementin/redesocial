@@ -4,11 +4,18 @@
 <meta charset="utf-8">
 	<link rel="stylesheet" href="css/indexlogin.css"/>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>Documento sem título</title>
+<title>Freedom Mouth</title>
 </head>
 
 <body>
 	<h1>Bem-Vindo(a)</h1>
+	
+	
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	
 	<form action="login.php" method="POST" id="login" class="log">
 		<p>Login</p>
 		<input type="email" name="email_login" class="field" placeholder="E-mail" required="required" />
@@ -27,7 +34,10 @@
 		<input type="submit" class="btn" value="Criar Conta"/>
 		<a onClick="$('#login').fadeIn(); $('#registrar').hide();">Já tenho uma conta</a>	
 	</form>
+	
+	<footer>
 	<p id="credits">&copy; Freedom Mouth, <?php date_default_timezone_set('America/Sao_Paulo'); echo date("Y");?>, Todos os direitos reservados.</p>
+	</footer>
 	
 </body>
 </html>

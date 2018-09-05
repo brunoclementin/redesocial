@@ -6,6 +6,14 @@
 	class LikesDAO extends Conexao{
 		public $Mensagem = "";
 		
+		function queryAll(){
+			$comando = $this->prepare("SELECT like_count FROM messages WHERE msg_id = ?");
+			$comando->setFetchMode(PDO::FETCH_ASSOC);
+			$resultado = $comando->fetchAll();
+			
+			return $resultado;
+		}
+		
 		function query(){
 			$comando = $this->prepare("SELECT U.username, U.uid, M.msg_id, M.message FROM users U, messages M 
 										WHERE U.uid=M.uid_fk and U.uid='?'");
@@ -67,6 +75,7 @@
 		function insertID($msg, $idfk){ //Insere os IDs na tabela message_like
 			$comando = $this->prepare("INSERT INTO message_like (msg_id_fk,id_fk) VALUES(?,?)");
 			$dados = array($msg, $idfk);
+			
 			try	{$comando->execute($dados);
 				return true;
 			}
