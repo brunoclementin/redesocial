@@ -111,9 +111,9 @@ form input.btn:hover{
 	display: none;
 }
 
-/*#login{
+#login{
 	display: none;
-}*/
+}
 
 form input.field:focus{
 	border-color: #001f3f;

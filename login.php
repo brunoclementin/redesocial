@@ -14,7 +14,8 @@
 			$_SESSION["usuario.nome"] = $logar["nome"];
 			$_SESSION["usuario.email"] = $logar["email"];
 			
-			header("Location: paginainicial.php");
+			//manter na tela inicial para poder responder
+			header("Location: #publicar");
 			exit();
 			
 		}

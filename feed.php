@@ -4,7 +4,6 @@
 	//daos usadas
 	include("processos/dao.post.php");
 	include("processos/dao.messagelike.php");
-	include("message_like_ajax.php");
 	$postDAO = new PostDAO();
 	$postslista = $postDAO->ListarPost();
 	$comentariolista = $postDAO->ListarComentario();
@@ -71,7 +70,7 @@
         var New_ID = sid[1];
         var REL = $(this).attr("rel");
         var URL = 'dao.messagelike.php';
-        var dataString = 'msg_id=' + New_ID + '&rel=' + REL;
+        var dataString = 'id_post=' + New_ID + '&rel=' + REL;
         $.ajax({
             type: "POST",
             url: URL,
@@ -102,11 +101,11 @@
 
 	foreach($resultado as $row)
 		{
-		$msg_id=$row['msg_id'];
-		$message=$row['message'];
+		$msg_id=$row['id_post'];
+		$message=$row['texto'];
+		$like_count = $row["like_count"];
 		$username=$_SESSION["usuario.nome"];
 		$uid=$_SESSION["usuario"];
-		$like_count = $row["like_count"];
 		}
 	?>
 
@@ -120,7 +119,7 @@ $resultado = $dao->queryAll();
 	}
 
 if($like_count>0)
-{$resultado=$dao->detailsWhoLiked($msg_id);
+{$resultado=$dao->detailsWhoLiked($msg);
 ?>
 <div class='likeUsers' id="likes<?php echo $msg_id ?>">
     <?php
@@ -185,7 +184,7 @@ echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
                 <?php
 			
 $dao = new LikesDAO();
-$like = $dao->detectID($msg_id);
+$like = $dao->detectID($idfk, $msgidfk);
 			
 if($like!=null)
 {

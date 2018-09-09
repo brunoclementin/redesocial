@@ -7,7 +7,7 @@
 		public $Mensagem = "";
 		
 		function queryAll(){
-			$comando = $this->prepare("SELECT like_count FROM messages WHERE msg_id = ?");
+			$comando = $this->prepare("SELECT like_count FROM posts WHERE id_post = ?");
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
 			$resultado = $comando->fetchAll();
 			
@@ -15,8 +15,8 @@
 		}
 		
 		function query(){
-			$comando = $this->prepare("SELECT U.username, U.uid, M.msg_id, M.message FROM users U, messages M 
-										WHERE U.uid=M.uid_fk and U.uid='?'");
+			$comando = $this->prepare("SELECT U.nome, U.id, P.id_post, P.texto FROM users U, posts P 
+										WHERE U.id=P.id_user and U.id='?'");
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
 			$resultado = $comando->fetchAll();
 			
@@ -37,7 +37,6 @@
 				$this->Mensagem = $e->getMessage();
 				return false;
 			}
-			//$dados = array($idfk, $msg);	
 			
 			//$comando->execute($msgID);
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
@@ -64,7 +63,7 @@
 		
 		
 		function buscarMessageId (){
-			$resultado = $this->query("SELECT * FROM messages WHERE msg_id = ?, message = ?");
+			$resultado = $this->query("SELECT * FROM posts WHERE id_post = ?, texto = ?");
 				$resultado->setFetchMode(PDO::FETCH_ASSOC);
 				$messageID = $resultado->fetchAll();
 			
@@ -87,7 +86,7 @@
 		
 		
 		function giveLike($msg){ //Dar Like caso nao tiver feito ainda
-			$comando = $this->prepare("UPDATE messages SET like_count=like_count+1 WHERE msg_id= ? ");
+			$comando = $this->prepare("UPDATE posts SET like_count=like_count+1 WHERE id_post= ? ");
 			try{
 				$comando->execute($msg);
 				return true;
@@ -116,9 +115,8 @@
 		function detailsWhoLiked($msg){  //Pegar Nome e ID do usuário que curtiu
 			$comando = $this->prepare("SELECT U.nome,U.id FROM message_like M, users U 
 										WHERE U.id=M.id_fk AND M.msg_id_fk= ? LIMIT 3");
-			$dados = array($msg);
 			
-			$comando->execute($dados);
+			$comando->execute($msg);
 			$comando->setFetchMode(PDO::FETCH_ASSOC);
 			$resultado = $comando->fetchAll();
 			
