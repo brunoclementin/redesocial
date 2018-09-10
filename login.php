@@ -7,6 +7,7 @@
 	
 	$logarDAO = new RegistroDAO();
 	$logar = $logarDAO->BuscarEmail($email);
+
 	if($logar != null){
 		if(md5($senha) == $logar["password"]){
 			

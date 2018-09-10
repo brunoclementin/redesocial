@@ -4,17 +4,24 @@
 <meta charset="utf-8">
 	<link rel="stylesheet" href="css/indexlogin.css"/>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 <title>Freedom Mouth</title>
+	
 </head>
 
 <body>
-	<h1>Bem-Vindo(a)</h1>
 	
 	<?php
 	include("processos/dao.pergunta.php");
+	
 	session_start(); 
+	
 	require_once("processos/dao.registro.php");
-	$logarDAO = new RegistroDAO();
+	$usuariosDAO = new RegistroDAO();
+	
+	if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {
+	$buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]) ;}
 	
 	
 	
@@ -44,19 +51,53 @@
 	}
 	?>
 	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+		<header class="lateral">
+		<nav  class="container">
+		
+		<ul class="box">
+			<div id="fotoCapa">				
+					<div id="campoPerfil">
+						
+						<li class="dropdown">
+							<a href="javascript:void(0)" class="dropbtn"><?php if($buscarEmail["foto"] == null){?>
+											<i class="fa fa-id-badge" style="font-size:48px"></i><?php
+													}else{?>								
+							<img id="fotoPerfil" src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?>
+							</a>
+							<div class="dropdown-content">
+							  <a href="perfil.php"><?=$buscarEmail["nome"]?></a>
+							  <a href="logout.php">Sair</a>
+							</div>
+						</li>
+						
+					</div>
+			</div>
+		</ul>
+		
+		</nav>
+		</header>
 
-	<h1><?=$pergunta["perguntas"];?></h1>
+
+
+	
+		<h1>Bem-Vindo(a)</h1>
+	
+	
+	<h1 id="pergunta"><?=$pergunta["perguntas"];?></h1>
 	
 	
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
 			<input type="hidden" name="idpergunta" value="<?=$pergunta["id_per"];?>"/>
 			<textarea name="textoresposta" placeholder="O que você pensa sobre isso?" id="textoresposta"
-				<?php	  if(!isset($_SESSION["id"]) || !isset($_SESSION["nome"])) 
-{ ?>
-			onClick="$('#login').fadeIn(); $('#publicar').hide();"></textarea> <?php }else{?>
-			<input type="submit" id="submit" value="Publicar"/> <?php } ?>
+				<?php	  if(!isset($_SESSION["usuario"]) || !isset($_SESSION["usuario.nome"])) 
+				{ ?>
+				onClick="$('#login').fadeIn(); $('#publicar').hide();" <?php } ?>></textarea> 
+			
+			  <?php if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {?>
+				<input type="submit" id="submit" value="Publicar"/>
+			 <?php } ?>
 			
 		</form>			
 	</div>
