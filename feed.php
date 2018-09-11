@@ -198,16 +198,16 @@ echo '<a href="#" class="like" id="like'.$msg_id.'" title="Like" rel="Like">Like
 
 
             <!--Utilizado CDN Font Awesome para aplicar icone-->
-            <button style="font-size:14px" id="abre_comentario" onClick="$('#<?=$post[" id_post"];?>').fadeToggle();">Exibir Comentários
+            <button style="font-size:14px" id="abre_comentario" onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários
             </button>
         </div>
 
 
         <!-- Div dos comentarios -->
-        <div hidden="" id="<?=$post[" id_post"];?>" name="divComentar">
+        <div hidden="" id="<?=$post["id_post"];?>" name="divComentar">
 
             <form action="post_grava.php" method="post" id="comentar">
-                <input type="hidden" name="id_comentario" value="<?=$post[" id_post"]?>"/>
+                <input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>"/>
                 <textarea name="textocomentario" id="textocomentario" placeholder="digite seu comentario"></textarea>
                 <input type="submit" name="btncomentar" value="Comentar" /><br />
             </form>
