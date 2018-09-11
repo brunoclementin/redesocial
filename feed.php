@@ -63,88 +63,38 @@ $comentariolista = $postDAO->ListarComentario();
     });
 });*/
 
-    //JavaScript para o sistema de Likes
-    $('.like').on("click", function () {
-        var ID = $(this).attr("id");
-        var sid = ID.split("like");
-        var New_ID = sid[1];
-        var REL = $(this).attr("rel");
-        var URL = 'dao.messagelike.php';
-        var dataString = 'id_post=' + New_ID + '&rel=' + REL;
-        $.ajax({
-            type: "POST",
-            url: URL,
-            data: dataString,
-            cache: false,
-            success: function (html) {
+    ////JavaScript para o sistema de Likes
+    //$('.like').on("click", function () {
+    //    var ID = $(this).attr("id");
+    //    var sid = ID.split("like");
+    //    var New_ID = sid[1];
+    //    var REL = $(this).attr("rel");
+    //    var URL = 'dao.messagelike.php';
+    //    var dataString = 'id_post=' + New_ID + '&rel=' + REL;
+    //    $.ajax({
+    //        type: "POST",
+    //        url: URL,
+    //        data: dataString,
+    //        cache: false,
+    //        success: function (html) {
 
-                if (REL == 'Like') {
-                    $("#youlike" + New_ID).slideDown('slow').prepend("<span id='you" + New_ID + "'><a href='#'>You</a> like this.</span>.");
-                    $("#likes" + New_ID).prepend("<span id='you" + New_ID + "'><a href='#'>You</a>, </span>");
-                    $('#' + ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
-                } else {
-                    $("#youlike" + New_ID).slideUp('slow');
-                    $("#you" + New_ID).remove();
-                    $('#' + ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
-                }
+    //            if (REL == 'Like') {
+    //                $("#youlike" + New_ID).slideDown('slow').prepend("<span id='you" + New_ID + "'><a href='#'>You</a> like this.</span>.");
+    //                $("#likes" + New_ID).prepend("<span id='you" + New_ID + "'><a href='#'>You</a>, </span>");
+    //                $('#' + ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
+    //            } else {
+    //                $("#youlike" + New_ID).slideUp('slow');
+    //                $("#you" + New_ID).remove();
+    //                $('#' + ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
+    //            }
 
-            }
-        })
-    });
+    //        }
+    //    })
+    //});
 </script>
 
 
-<?php
 
-$dao = new LikesDAO();
-$resultado = $dao->query();
-
-foreach($resultado as $row)
-{
-    $msg_id=$row['id_post'];
-    $message=$row['texto'];
-    $like_count = $row["like_count"];
-    $username=$_SESSION["usuario.nome"];
-    $uid=$_SESSION["usuario"];
-}
-?>
-
-<?php
-
-$dao = new LikesDAO();
-$resultado = $dao->queryAll();
-
-foreach($resultado as $row){
-	$like_count = $row["like_count"];
-}
-
-if($like_count>0)
-{
-    $resultado=$dao->detailsWhoLiked($msg);
-?>
-<div class='likeUsers' id="likes<?php echo $msg_id ?>">
-    <?php
-    $new_like_count=$like_count-3;
-    foreach($resultado as $row)
-    {
-        $like_uid=$row['id'];
-        $likeusername=$row['nome'];
-        if($like_uid==$uid)
-        {
-            echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
-        }
-        else
-        {
-            echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
-        }
-    }
-    echo 'and '.$new_like_count.' other friends like this';
-    ?>
-</div>
-<?php }
-else {
-    echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
-} ?>
 
 <div id="post">
     <?php
@@ -176,35 +126,27 @@ else {
             </span>
             <!--Div do comentário com o botão de Likes-->
             <div>
-                <ul>
-                    <li>
-                        <p id="texto">
-                            <?=$post["texto"];?>
-                        </p>
-                        <button class="like">Concordo</button>
-                        <span class="likes">
-                            <span>0</span> curtidas
-                        </span>
-                    </li>
-                </ul>
+                <form action="likes.php" method="post">
+                    <ul>
+                        <li>
+                            <p id="texto">                                
+                                <?=$post["texto"];?>
+                            </p>
+                             
+                            <button name="likeup" class="like">Concordo</button>
+                            <input type="hidden" name="post" value="<?=$post["id_post"]?>" />
+                            <input type="hidden" name="userid" value="<?=$_SESSION["usuario"]?>/>
+                            <span class="likes">
+                                <span>0</span> curtidas
+                            </span>
+
+                        </li>
+                    </ul>
+                </form>
             </div>
 
             <!--Sistema de likes-->
-            <div>
-                <?php
-
-        $dao = new LikesDAO();
-        $like = $dao->detectID($idfk, $msgidfk);
-
-        if($like!=null)
-        {
-            echo '<a href="#" class="like" id="like'.$msg_id.'" title="Unlike" rel="Unlike">Unlike</a>';
-        }
-        else
-        {
-            echo '<a href="#" class="like" id="like'.$msg_id.'" title="Like" rel="Like">Like</a>';
-        } ?>
-            </div>
+           
 
 
             <!--Utilizado CDN Font Awesome para aplicar icone-->
