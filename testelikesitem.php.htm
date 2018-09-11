@@ -1,25 +1,25 @@
-<?php
-include("inc/topo.php");
+    <?php
+    include("inc/topo.php");
 
-//daos usadas
-include("processos/dao.post.php");
-include("processos/dao.messagelike.php");
-$postDAO = new PostDAO();
-$postslista = $postDAO->ListarPost();
-$comentariolista = $postDAO->ListarComentario();
+    //daos usadas
+    include("processos/dao.post.php");
+    include("processos/dao.messagelike.php");
+    $postDAO = new PostDAO();
+    $postslista = $postDAO->ListarPost();
+    $comentariolista = $postDAO->ListarComentario();
 
-?>
+    ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
-    //Aqui Ã© uma soluÃ§Ã£o para textos longos, com um leia mais, nÃ£o achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
+    //Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
     var wordLimit = 50;
 
     $(function () {
 
-        //trata o conteÃºdo na inicializaÃ§Ã£o da pÃ¡gina
+        //trata o conteúdo na inicialização da página
         $('p#texto').each(function () {
             var post = $(this);
             var text = post.text();
@@ -38,7 +38,7 @@ $comentariolista = $postDAO->ListarComentario();
 
         });
 
-        //ao clicar num link "Leia mais", mostra o conteÃºdo original
+        //ao clicar num link "Leia mais", mostra o conteúdo original
         $('.read-more').on('click', function () {
             var post = $(this).closest('p#texto');
             var text = post.data('original-text');
@@ -162,7 +162,7 @@ else {
             <i class="fa fa-id-badge" style="font-size:48px"></i>
             <?php
                   }else{?>
-            <img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>" />
+            <img id="campoFotoFeed" src="fotos/perfil/<?=$post[" usuariofoto"]?>" />
             <?php }?>
 
 
@@ -174,7 +174,7 @@ else {
             <span id="dataPost">
                 <?=$post["data"];?>
             </span>
-            <!--Div do comentÃ¡rio com o botÃ£o de Likes-->
+            <!--Div do comentário com o botão de Likes-->
             <div>
                 <ul>
                     <li>
@@ -209,7 +209,7 @@ else {
 
             <!--Utilizado CDN Font Awesome para aplicar icone-->
             <button style="font-size:14px" id="abre_comentario" onclick="$('#<?=$post["id_post"];?>').fadeToggle();">
-                Exibir ComentÃ¡rios
+                Exibir Comentários
             </button>
         </div>
 
@@ -233,7 +233,7 @@ else {
                 <i class="fa fa-id-badge" style="font-size:48px"></i>
                 <?php
                       }else{?>
-                <img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>" />
+                <img id="campoFotoFeed" src="fotos/perfil/<?=$coment[" userfoto"]?>" />
                 <?php }?>
                 <p id="usercoment">
                     <b>
