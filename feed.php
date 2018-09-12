@@ -3,10 +3,12 @@ include("inc/topo.php");
 
 //daos usadas
 include("processos/dao.post.php");
-include("processos/dao.messagelike.php");
+include("processos/dao.likes.php");
 $postDAO = new PostDAO();
 $postslista = $postDAO->ListarPost();
 $comentariolista = $postDAO->ListarComentario();
+$likeDao = new likesDao();
+$likelista = $likeDao->ListarLike();
 
 ?>
 
@@ -98,8 +100,8 @@ $comentariolista = $postDAO->ListarComentario();
 
 <div id="post">
     <?php
-    foreach($postslista as $post){
-    ?>
+    foreach($postslista as $post){?>
+    
     <div class="commentPerfil">
         <div class="conteudoPost">
             <div id="perguntaFeed">
@@ -126,23 +128,30 @@ $comentariolista = $postDAO->ListarComentario();
             </span>
             <!--Div do comentário com o botão de Likes-->
             <div>
-                <form action="likes.php" method="post">
+               
                     <ul>
                         <li>
                             <p id="texto">                                
                                 <?=$post["texto"];?>
                             </p>
-                             
-                            <button name="likeup" class="like">Concordo</button>
-                            <input type="hidden" name="post" value="<?=$post["id_post"]?>" />
-                            <input type="hidden" name="userid" value="<?=$_SESSION["usuario"]?>/>
+                            
+                            <form action="likes.php" method="post"> 
+                                <button name="likeup" class="like">Concordo</button>
+                                <?php foreach($likelista as $like){
+                               if($like["msg_id_fk"] == $post["id_post"]){?>                            
+                            <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
+                            <input type="hidden" id="post" name="post" value="<?=$post["id_post"]?>"/>
+                            <input type="hidden" id="userid" name="userid" value="<?=$_SESSION["usuario"]?>"/>
+                            </form>
                             <span class="likes">
-                                <span>0</span> curtidas
-                            </span>
-
+                                <span><?=$like["created"]?></span> curtidas
+                            </span> 
+                            <?php }}?>
+                            
+                            
                         </li>
                     </ul>
-                </form>
+                
             </div>
 
             <!--Sistema de likes-->
@@ -197,7 +206,8 @@ $comentariolista = $postDAO->ListarComentario();
         </div>
     </div>
 
-    <?php } ?>
+    <?php }
+    ?>
 </div>
 
 
