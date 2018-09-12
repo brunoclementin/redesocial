@@ -152,6 +152,7 @@ $likelista = $likeDao->ListarLike();
                             </form>
                             <?php foreach($likelista as $like){
                             if($like["msg_id_fk"] == $post["id_post"]){
+                                //aqui é onde tem que contar os likes
                                 $curtidas = count($like["like_id"]); ?>
                             <span class="likes">
                                 <span><?=$curtidas;?></span> curtidas
