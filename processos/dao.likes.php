@@ -18,6 +18,19 @@ class likesDao extends Conexao {
         }
     }
 
+    function DeleteLike($deletelike){
+        $comando = $this->prepare("DELETE FROM message_like WHERE like_id = ?");
+
+        try{
+            $comando->execute($deletelike);
+            return true;
+        }
+        catch(Exception $e){
+            $this->Mensagem = $e->getMessage();
+            return false;
+        }
+                          }
+
     function ListarLike(){
         $resultado= $this->query("SELECT * FROM message_like");
         $resultado->setFetchMode(PDO::FETCH_ASSOC);
