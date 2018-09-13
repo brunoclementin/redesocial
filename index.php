@@ -3,10 +3,14 @@
 <head>	
 <meta charset="utf-8">
 	<link rel="stylesheet" href="css/indexlogin.css"/>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 <title>Freedom Mouth</title>
+	
+	<script>
+	
+	</script>
 	
 </head>
 
@@ -122,7 +126,7 @@
 		<a onClick="$('#login').fadeIn(); $('#registrar').hide();">Já tenho uma conta</a>	
 	</form>
 	
-	<footer>
+	<footer id="footer">
 	<p id="credits">&copy; Freedom Mouth, <?php date_default_timezone_set('America/Sao_Paulo'); echo date("Y");?>, Todos os direitos reservados.</p>
 	</footer>
 	

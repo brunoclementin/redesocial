@@ -128,9 +128,7 @@ form input.field:focus{
 	margin-top: 20px;
 	margin-bottom: 20px;
 	color: #FFF;
-	font-size: 10pt;
-		
-		
+	font-size: 10pt;	
 }
 
 
@@ -192,7 +190,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: #7604bf;
 }
 
 li.dropdown {
@@ -228,4 +226,8 @@ li.dropdown {
 	padding: 0;
 	margin: 0;
 	border-radius: 50%;
+}
+
+#textoresposta {
+	resize: none;
 }

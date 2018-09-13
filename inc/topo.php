@@ -74,7 +74,6 @@ Removi a foto de fundo da barra lateral por estetica mesmo, dependo da foto da p
 			</div>
 				</div>
 			
-			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>
 			<li><a href="noticias.php">Noticias</a></li></lo>
 			<li><a href="logout.php">Sair</a></li>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 10-Set-2018 às 04:01
+-- Data de Criação: 12-Set-2018 às 21:50
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de Dados: `redesocial`
 --
-CREATE DATABASE IF NOT EXISTS `redesocial` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `redesocial` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `redesocial`;
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `id_post` int(11) NOT NULL,
   `data` datetime NOT NULL,
   PRIMARY KEY (`id_comentario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `comentarios`
@@ -53,7 +53,8 @@ INSERT INTO `comentarios` (`id_comentario`, `textocomentario`, `id_usuario`, `no
 (8, 'xxx', 11, 'CPM 22', 13, '2018-08-22 16:26:16'),
 (9, '', 11, 'CPM 22', 13, '2018-08-22 16:26:23'),
 (10, '', 11, 'CPM 22', 13, '2018-08-22 16:26:29'),
-(11, '', 11, 'CPM 22', 13, '2018-08-24 14:56:53');
+(11, '', 11, 'CPM 22', 13, '2018-08-24 14:56:53'),
+(12, 'asdasd', 6, 'bruno', 15, '2018-09-12 16:57:12');
 
 -- --------------------------------------------------------
 
@@ -69,7 +70,16 @@ CREATE TABLE IF NOT EXISTS `message_like` (
   PRIMARY KEY (`like_id`),
   KEY `id_fk` (`id_fk`),
   KEY `msg_id_fk` (`msg_id_fk`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+
+--
+-- Extraindo dados da tabela `message_like`
+--
+
+INSERT INTO `message_like` (`like_id`, `msg_id_fk`, `id_fk`, `created`) VALUES
+(26, 15, 12, 4),
+(27, 14, 12, 1),
+(28, 13, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -82,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `pergunta` (
   `perguntas` varchar(255) NOT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_per`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `pergunta`
@@ -91,8 +101,7 @@ CREATE TABLE IF NOT EXISTS `pergunta` (
 INSERT INTO `pergunta` (`id_per`, `perguntas`, `data`) VALUES
 (6, 'Olá queridão', '2018-08-04 13:00:00'),
 (7, 'Quem vigia os vigilantes ?', '2018-08-05 13:00:00'),
-(8, 'xablausss', '2018-08-14 23:00:00'),
-(9, 'Você sabe o que são cucumbers?', '2018-09-09 13:00:00');
+(8, 'xablausss', '2018-08-14 23:00:00');
 
 -- --------------------------------------------------------
 
@@ -104,28 +113,25 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `id_post` int(11) NOT NULL AUTO_INCREMENT,
   `id_pergunta` int(11) NOT NULL,
   `texto` varchar(5000) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `data` datetime NOT NULL,
-  `like_count` int(11) DEFAULT NULL,
-  `created` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_post`),
-  KEY `fk_per_post` (`id_pergunta`),
-  KEY `id_user` (`id_user`)
+  KEY `fk_per_post` (`id_pergunta`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Extraindo dados da tabela `posts`
 --
 
-INSERT INTO `posts` (`id_post`, `id_pergunta`, `texto`, `id_user`, `nome`, `data`, `like_count`, `created`) VALUES
-(9, 6, 'asdasd', 6, 'bruno', '2018-08-04 14:18:07', NULL, NULL),
-(10, 6, 'asdf', 6, 'bruno', '2018-08-04 15:55:48', NULL, NULL),
-(11, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hamasd', 6, 'bruno', '2018-08-05 14:09:40', NULL, NULL),
-(12, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', 6, 'bruno', '2018-08-05 14:09:56', NULL, NULL),
-(13, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', 6, 'bruno', '2018-08-05 14:10:06', NULL, NULL),
-(14, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', 6, 'bruno', '2018-08-05 14:10:14', NULL, NULL),
-(15, 8, 'asdfasdfa', 10, 'Brisa', '2018-08-14 23:17:13', NULL, NULL);
+INSERT INTO `posts` (`id_post`, `id_pergunta`, `texto`, `id_user`, `nome`, `data`) VALUES
+(9, 6, 'asdasd', '6', 'bruno', '2018-08-04 14:18:07'),
+(10, 6, 'asdf', '6', 'bruno', '2018-08-04 15:55:48'),
+(11, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Hamasd', '6', 'bruno', '2018-08-05 14:09:40'),
+(12, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', '6', 'bruno', '2018-08-05 14:09:56'),
+(13, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', '6', 'bruno', '2018-08-05 14:10:06'),
+(14, 7, 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.\r\n\r\nPorque nós o usamos?\r\nÉ um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível. Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por ''lorem ipsum'' mostra vários websites ainda em sua fase de construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de propósito (injetando humor, e coisas do gênero).\r\n\r\n\r\nDe onde ele vem?\r\nAo contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico. Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC. Richard McClintock, um professor de latim do Ham', '6', 'bruno', '2018-08-05 14:10:14'),
+(15, 8, 'asdfasdfa', '10', 'Brisa', '2018-08-14 23:17:13');
 
 -- --------------------------------------------------------
 
@@ -143,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `fotocapa` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `users`
@@ -158,7 +164,9 @@ INSERT INTO `users` (`id`, `nome`, `email`, `password`, `data`, `foto`, `fotocap
 (8, 'bruno', 'email@email11.com', '202cb962ac59075b964b07152d234b70', '2018-07-24 19:27:30', '', ''),
 (9, 'Jarara', 'email@email1', '202cb962ac59075b964b07152d234b70', '2018-08-06 13:05:22', '', ''),
 (10, 'Brisa', 'brisa@brisa', '202cb962ac59075b964b07152d234b70', '2018-08-11 18:43:09', '5067a68872ae5e03de95744515276f0e.jpg', '56c5efba8c0a19abab75566eb4a5b2a3.jpg'),
-(11, 'CPM 22', 'cpm22@gmail.com', 'cb42e130d1471239a27fca6228094f0e', '2018-08-16 14:07:00', '6e75b49d1faf9db72eecad5634a2feae.jfif', 'a5d3202847baee19462a13906e110f31.jpg');
+(11, 'CPM 22', 'cpm22@gmail.com', 'cb42e130d1471239a27fca6228094f0e', '2018-08-16 14:07:00', '6e75b49d1faf9db72eecad5634a2feae.jfif', 'a5d3202847baee19462a13906e110f31.jpg'),
+(12, 'Bruno', 'email@email8', '202cb962ac59075b964b07152d234b70', '2018-09-10 15:21:59', '', ''),
+(13, 'Bruno', 'brisa@brisa9', '202cb962ac59075b964b07152d234b70', '2018-09-10 15:40:02', '', '');
 
 --
 -- Constraints for dumped tables
@@ -175,8 +183,7 @@ ALTER TABLE `message_like`
 -- Limitadores para a tabela `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `fk_per_post` FOREIGN KEY (`id_pergunta`) REFERENCES `pergunta` (`id_per`),
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `fk_per_post` FOREIGN KEY (`id_pergunta`) REFERENCES `pergunta` (`id_per`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
