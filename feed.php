@@ -139,20 +139,23 @@ $likelista = $likeDao->ListarLike();
                             <button name="likeup" class="like">Concordo</button>  
                                 <?php foreach ($likelista as $like){
                                           if($like["msg_id_fk"] == $post["id_post"]){?>
-                            <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
+                                <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
                                 <input type="hidden" id="likeid" name="likeid" value="<?=$like["like_id"]?>" />
+                                <input type="hidden" id="userfk" name="userfk" value="<?=$like["id_fk"]?>" />
                                 <?php}
                                 else{?>
                             <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>" />   
                                 <?php }} ?>
-                            <input type="hidden" id="userfk" name="userfk" value="<?=$likelista["id_fk"]?>"/>
+                            
                             <input type="hidden" id="post" name="post" value="<?=$post["id_post"]?>"/>
                             <input type="hidden" id="userid" name="userid" value="<?=$_SESSION["usuario"]?>"/>
                             </form>
                             <?php foreach($likelista as $like){
-                            if($like["msg_id_fk"] == $post["id_post"]){?>
+                            if($like["msg_id_fk"] == $post["id_post"]){
+                                //aqui é onde tem que contar os likes
+                                $curtidas = count($like["like_id"]); ?>
                             <span class="likes">
-                                <span><?=$like["created"]?></span> curtidas
+                                <span><?=$curtidas;?></span> curtidas
                             </span> 
                             <?php }}?>
                             

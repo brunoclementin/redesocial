@@ -23,10 +23,10 @@ if($contador < 1 && $iduser == $_SESSION["usuario"]){
     }
 }
 
-   elseif($contador > 0 &&  $iduser == $_SESSION["usuario"]){
-        $contador = $contador +1;
-        $curtir = array($contador, $likeid);
-        $sucesso = $likepost->LikeUpdate($curtir);
+   elseif($contador > 0 &&  $idfk != $_SESSION["usuario"]){
+
+        $curtir = array($idpost,$iduser,$contador);
+        $sucesso = $likepost->IncluiLike($curtir);
             if($sucesso){
                 header("Location: feed.php");
                 exit();
@@ -35,6 +35,16 @@ if($contador < 1 && $iduser == $_SESSION["usuario"]){
                     header("Location: feed.php?erro". $likepost->Mensagem);
                 }
     }
-
+elseif($contador > 0 && $idfk == $_SESSION["usuario"]){
+    $deletelike = array($likeid);
+    $sucesso = $likepost->DeleteLike($deletelike);
+        if($sucesso){
+            header("Location: feed.php");
+            exit();
+        }        
+        else{
+            header("Location: feed.php?erro". $likepost->Mensagem);
+            }
+}
 
 ?>
