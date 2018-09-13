@@ -6,6 +6,23 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
+	<!--JS para o auto-resize da textarea do index-->
+	<script type="text/javascript">
+		$(document)
+    .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+    })
+    .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
+    });
+	</script>
+	
 <title>Freedom Mouth</title>
 	
 	<script>
@@ -23,11 +40,7 @@
 	
 	require_once("processos/dao.registro.php");
 	$usuariosDAO = new RegistroDAO();
-	
-	if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {
-	$buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]) ;}
-	
-	
+
 	
 	$today = date_default_timezone_set('America/Sao_Paulo');
 	$time = 0700;
@@ -55,6 +68,14 @@
 	}
 	?>
 	
+	<!--Verifica se está logado para então executar a variavel-->
+	<?php 
+	if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {
+	$buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]) ;}
+	if(!isset($_SESSION["usuario"]) || !isset($_SESSION["usuario.nome"])) {
+		$buscarEmail = NULL;
+	}
+	?>
 	
 		<header class="lateral">
 		<nav  class="container">
@@ -85,7 +106,7 @@
 
 
 	
-		<h1>Bem-Vindo(a)</h1>
+		<h2>Bem-Vindo(a)</h2>
 	
 	
 	<h1 id="pergunta"><?=$pergunta["perguntas"];?></h1>
@@ -94,7 +115,7 @@
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
 			<input type="hidden" name="idpergunta" value="<?=$pergunta["id_per"];?>"/>
-			<textarea name="textoresposta" placeholder="O que você pensa sobre isso?" id="textoresposta"
+			<textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="O que você pensa sobre isso?" id="textoresposta"
 				<?php	  if(!isset($_SESSION["usuario"]) || !isset($_SESSION["usuario.nome"])) 
 				{ ?>
 				onClick="$('#login').fadeIn(); $('#publicar').hide();" <?php } ?>></textarea> 
@@ -127,7 +148,7 @@
 	</form>
 	
 	<footer id="footer">
-	<p id="credits">&copy; Freedom Mouth, <?php date_default_timezone_set('America/Sao_Paulo'); echo date("Y");?>, Todos os direitos reservados.</p>
+	&copy; Freedom Mouth, <?php date_default_timezone_set('America/Sao_Paulo'); echo date("Y");?>, Todos os direitos reservados.
 	</footer>
 	
 </body>

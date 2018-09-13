@@ -142,7 +142,7 @@ $likelista = $likeDao->ListarLike();
                                 <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
                                 <input type="hidden" id="likeid" name="likeid" value="<?=$like["like_id"]?>" />
                                 <input type="hidden" id="userfk" name="userfk" value="<?=$like["id_fk"]?>" />
-                                <?php}
+                                <?php }
                                 else{?>
                             <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>" />   
                                 <?php }} ?>
@@ -165,7 +165,7 @@ $likelista = $likeDao->ListarLike();
                 
             </div>
 
-            <!--Sistema de likes-->
+
            
 
 

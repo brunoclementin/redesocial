@@ -12,13 +12,24 @@ body {
 			background-color: #9370DB;
 			
 		}
-		h1{
+
+			h1{
 			color: #FFFFFF;
 			display: block;
 			margin: auto;
 			width: 90%;
 			text-align: center;
 			padding-top: 10vh;
+			padding-bottom: 10vh;
+}
+
+		h2{
+			color: #FFFFFF;
+			display: block;
+			margin: auto;
+			width: 100%;
+			text-align: center;
+			padding-top: 0vh;
 			padding-bottom: 10vh;
 		}
 		
@@ -120,7 +131,7 @@ form input.field:focus{
 	
 	
 }
-#credits{
+/*#credits{
 	display: block;
 	text-align: center;	
 	margin: auto;
@@ -129,7 +140,7 @@ form input.field:focus{
 	margin-bottom: 20px;
 	color: #FFF;
 	font-size: 10pt;	
-}
+}*/
 
 
 #loading {
@@ -160,9 +171,13 @@ main {
 }
 
 #footer {
-	display: block;
-  	min-height: 100px;
-  	width: 100%;
+	margin: auto;
+	width: 100%;
+	bottom: 0;
+	position: fixed;
+	text-align: center;
+	color: #FFF;
+	font-size: 10pt;
 }
 
 #publicar{
@@ -230,4 +245,15 @@ li.dropdown {
 
 #textoresposta {
 	resize: none;
+	display: block;
+  	box-sizing: padding-box;
+  	overflow: hidden;
+  	padding: 10px;
+  	width: 250px;
+  	font-size: 14px;
+  	margin: 50px auto;
+  	border-radius: 6px;
+  	box-shadow: 2px 2px 8px rgba(black, .3);
+  	border: 0;
+	
 }
