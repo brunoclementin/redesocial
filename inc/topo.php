@@ -37,9 +37,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<?php
 				date_default_timezone_set("America/Sao_Paulo"); //Lista em: http://www.php.net/manual/pt_BR/timezones.php
 				$hora = date("G");
-				if ($hora >= 6 && $hora < 12) echo "body, .lateral, #comentariosPost {background-color:rgb(61,103, 255);}"; //Dia
-				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral, #comentariosPost {background-color:rgb(237, 122, 17);}"; //Tarde
-				else echo "body, .lateral, #comentariosPost {background-color:rgb(147,112,219);}"; //Noite
+				if ($hora >= 6 && $hora < 12) echo "body, .lateral, .comentariosPost {background-color:rgb(61,103, 255);}"; //Dia
+				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral, .comentariosPost {background-color:rgb(237, 122, 17);}"; //Tarde
+				else echo "body, .lateral, .comentariosPost {background-color:rgb(147,112,219);}"; //Noite
 			?>
 		</style>
 	

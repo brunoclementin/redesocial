@@ -108,6 +108,26 @@ $likelista = $likeDao->ListarLike();
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
         this.rows = minRows + rows;
     });
+	
+	
+	/*Ajax para like em tempo real, ainda em testes*/
+	$(document).ready(function(){
+    $('#ajax').submit(function(){
+        var dados = $( this ).serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "likes.php",
+            data: dados,
+            success: function( data )
+            {
+                alert( data );
+            }
+        });
+
+        return false;
+    });
+});
 </script>
 
 
@@ -150,7 +170,8 @@ $likelista = $likeDao->ListarLike();
                                 <?=$post["texto"];?>
                             </p>
                             
-                            <form action="likes.php" method="post"> 
+							<!--Form action e Method devem ficar vazios pois ja estáo especificados no Ajax-->
+                            <form action="" method="" id="ajax"> 
                             <button name="likeup" class="like">Concordo</button>  
                                 <?php foreach ($likelista as $like){
                                           if($like["msg_id_fk"] == $post["id_post"]){?>
@@ -205,7 +226,7 @@ $likelista = $likeDao->ListarLike();
         foreach($comentariolista as $coment){
 			if($coment["id_post"] == $post["id_post"]){?>
 
-            <section id="comentariosPost">
+            <section class="comentariosPost">
                 <?php if($coment["userfoto"] == null){?>
                 <i class="fa fa-id-badge" style="font-size:48px"></i>
                 <?php
