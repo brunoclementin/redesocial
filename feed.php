@@ -196,7 +196,7 @@ $likelista = $likeDao->ListarLike();
 
             <form action="post_grava.php" method="post" id="comentar">
                 <input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>" />
-                <textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="digite seu comentario"></textarea>
+                <textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="digite seu comentario" name="textocomentario"></textarea>
                 <input type="submit" name="btncomentar" value="Comentar"/>
                 <br />
             </form>
