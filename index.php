@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
-	<!--JS para o auto-resize da textarea do index-->
+	<!--JS para o auto-resize da textarea-->
 	<script type="text/javascript">
 		$(document)
     .one('focus.autoExpand', 'textarea.autoExpand', function(){

@@ -93,6 +93,21 @@ $likelista = $likeDao->ListarLike();
     //        }
     //    })
     //});
+	
+		/*JS para o auto-resize da textarea*/
+			$(document)
+    .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+    })
+    .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
+    });
 </script>
 
 
@@ -181,8 +196,8 @@ $likelista = $likeDao->ListarLike();
 
             <form action="post_grava.php" method="post" id="comentar">
                 <input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>" />
-                <textarea name="textocomentario" id="textocomentario" placeholder="digite seu comentario"></textarea>
-                <input type="submit" name="btncomentar" value="Comentar" />
+                <textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="digite seu comentario"></textarea>
+                <input type="submit" name="btncomentar" value="Comentar"/>
                 <br />
             </form>
             <?php
@@ -190,7 +205,7 @@ $likelista = $likeDao->ListarLike();
         foreach($comentariolista as $coment){
 			if($coment["id_post"] == $post["id_post"]){?>
 
-            <section class="comentariosPost">
+            <section id="comentariosPost">
                 <?php if($coment["userfoto"] == null){?>
                 <i class="fa fa-id-badge" style="font-size:48px"></i>
                 <?php
