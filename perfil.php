@@ -101,6 +101,10 @@ $usuariolista = $usuarioDAO->listarUsuario();
 						
 						<img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>"/>
 						<p id="usercoment"><b><?=$coment["nome_usuario"]?></b></p>
+						<span id="dataPost">
+                  		  <?=$coment["data"]?>
+                   		 <br />
+                		</span>
 						<span id="textocoment"><?=$coment["textocomentario"]?></span>
 						<?php }} ?>
 					</form>
