@@ -131,8 +131,7 @@ form input.field:focus{
 	
 	
 }
-<<<<<<< HEAD
-=======
+
 /*#credits{
 	display: block;
 	text-align: center;	
@@ -143,7 +142,7 @@ form input.field:focus{
 	color: #FFF;
 	font-size: 10pt;	
 }*/
->>>>>>> origin/master
+
 
 
 #loading {
@@ -173,14 +172,6 @@ main {
     min-height:         calc(100vh - 100px);
 }
 
-<<<<<<< HEAD
-footer {
-	display: block;
-  	min-height: 100px;
-  	width: 100%;
-	margin-top: 300px;
-	text-align: center;
-=======
 #footer {
 	margin: auto;
 	width: 100%;
@@ -189,7 +180,6 @@ footer {
 	text-align: center;
 	color: #FFF;
 	font-size: 10pt;
->>>>>>> origin/master
 }
 
 #publicar{
@@ -217,11 +207,8 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-<<<<<<< HEAD
     background-color: #7531c5;
-=======
     background-color: #7604bf;
->>>>>>> origin/master
 }
 
 li.dropdown {
@@ -259,7 +246,6 @@ li.dropdown {
 	border-radius: 50%;
 }
 
-<<<<<<< HEAD
 form #textoresposta{
 	margin-left: 30%;
 	display: block;
@@ -273,7 +259,8 @@ form #textoresposta{
 	display: relative;
 	align-content: center;
 	text-align: center;
-=======
+}
+
 #textoresposta {
 	resize: none;
 	display: block;
@@ -286,6 +273,4 @@ form #textoresposta{
   	border-radius: 6px;
   	box-shadow: 2px 2px 8px rgba(black, .3);
   	border: 0;
-	
->>>>>>> origin/master
 }
