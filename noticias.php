@@ -9,12 +9,15 @@
 	<section id="primeirasNoticias">
 	<div class="container-grid">
 
-		<!--uma coluna
+		<!--uma coluna-->
 		<div class="row">
 			<div class="col">
-				<div class="teste">col</div>
+				<div class="col1">
+						<a href="<?=$elpais->link;?>"><h1><?=$elpais->title;?></h1>
+						<img src="<?=$imgelpais->url?>"></a>
+				</div>
 			</div>
-		</div>-->
+		</div>
 	
 		<!--duas colunas
 		<div class="row">
@@ -44,8 +47,8 @@
 			<div class="col col-4">
 				<div class="teste">
 					<article>
-						<a href="<?=$elpais->link;?>"><h1><?=$elpais->title;?></h1>
-						<img src="<?=$imgelpais->url?>"></a>
+						<a href="<?=$idg->link;?>"><h1><?=$idg->title;?></h1>
+						<img src="<?=$imgidg->url?>"></a>
 					</article>
 				</div>
 			</div>
@@ -68,8 +71,8 @@
 			<div class="col col-4">
 				<div class="teste">
 					<article>
-						<a href="<?=$idg->link;?>"><h1><?=$idg->title;?></h1>
-						<img src="<?=$imgidg?>"></a>
+						<a href="<?=$dw->link;?>"><h1><?=$dw->title;?></h1>
+						<img src="<?=$imgdw?>"></a>
 					</article>
 				</div>
 			</div>
@@ -106,6 +109,42 @@
 					<article>
 						<a href="<?=$cbn->link;?>"><h1><?=$cbn->title;?></h1>
 						<img src="<?=$imgcbn->url?>"></a>
+					</article>
+				</div>
+			</div>
+		</div>
+		
+						<!--quatro colunas-->
+		<div class="row">
+			<div class="col col-4">
+				<div class="teste">
+					<article>
+						<a href="<?=$wwf->link;?>"><h1><?=$wwf->title;?></h1>
+						<img src="<?=$imgwwf->url?>"></a>
+					</article>
+				</div>
+			</div>
+			<div class="col col-4">
+				<div class="teste">
+					<article>
+						<a href="<?=$reuters->link;?>"><h1><?=$reuters->title;?></h1>
+						<img src="<?=$imgreuters->url?>"></a>
+					</article>
+				</div>
+			</div>
+			<div class="col col-4">
+				<div class="teste">
+					<article>
+						<a href="<?=$ebc->link;?>"><h1><?=$ebc->title;?></h1>
+						<img src="<?=$imgebc->url?>"></a>
+					</article>
+				</div>
+			</div>
+			<div class="col col-4">
+				<div class="teste">
+					<article>
+						<a href="<?=$estadao->link;?>"><h1><?=$estadao->title;?></h1>
+						<img src="<?=$imgestadao->url?>"></a>
 					</article>
 				</div>
 			</div>
