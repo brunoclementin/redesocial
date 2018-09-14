@@ -43,7 +43,10 @@
 	
 	require_once("processos/dao.registro.php");
 	$usuariosDAO = new RegistroDAO();
-
+	
+	if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {
+	$buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]) ;}	
+	
 	
 	$today = date_default_timezone_set('America/Sao_Paulo');
 	$time = 0700;

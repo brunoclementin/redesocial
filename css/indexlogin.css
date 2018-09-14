@@ -131,6 +131,7 @@ form input.field:focus{
 	
 	
 }
+
 /*#credits{
 	display: block;
 	text-align: center;	
@@ -141,6 +142,7 @@ form input.field:focus{
 	color: #FFF;
 	font-size: 10pt;	
 }*/
+
 
 
 #loading {
@@ -205,6 +207,7 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
+    background-color: #7531c5;
     background-color: #7604bf;
 }
 
@@ -243,6 +246,21 @@ li.dropdown {
 	border-radius: 50%;
 }
 
+form #textoresposta{
+	margin-left: 30%;
+	display: block;
+	width: 40%;
+	height: 20px;
+	text-align: center;
+	border-style: outset;
+}
+
+#submit {
+	display: relative;
+	align-content: center;
+	text-align: center;
+}
+
 #textoresposta {
 	resize: none;
 	display: block;
@@ -255,5 +273,4 @@ li.dropdown {
   	border-radius: 6px;
   	box-shadow: 2px 2px 8px rgba(black, .3);
   	border: 0;
-	
 }
