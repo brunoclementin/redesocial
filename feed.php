@@ -9,6 +9,7 @@ $postslista = $postDAO->ListarPost();
 $comentariolista = $postDAO->ListarComentario();
 $likeDao = new likesDao();
 $likelista = $likeDao->ListarLike();
+$numlike = $likeDao->CountLike();
 
 ?>
 
@@ -127,7 +128,9 @@ $likelista = $likeDao->ListarLike();
                             <?php foreach($likelista as $like){
                             if($like["msg_id_fk"] == $post["id_post"]){
                                 //aqui é onde tem que contar os likes
-                                $curtidas = count($like["like_id"]); ?>
+                                $curtidas = count($like["like_id"], COUNT_RECURSIVE);
+                                //count($numlike, COUNT_RECURSIVE)
+                            ?>
                             <span class="likes">
                                 <span><?=$curtidas;?></span> curtidas
                             </span> 

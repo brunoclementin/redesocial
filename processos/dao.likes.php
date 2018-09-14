@@ -39,6 +39,14 @@ class likesDao extends Conexao {
         return $lista;
     }
 
+    function CountLike(){
+        $resultado = $this->query("SELECT COUNT(like_id) FROM message_like");
+        $resultado->setFetchMode(PDO::FETCH_ASSOC);
+        $likenumber = $resultado->fetchAll();
+
+        return $likenumber;
+    }
+
     function LikeUpdate($likeupdate){
         $comando = $this->prepare("UPDATE message_like SET created = ? WHERE like_id = ?");
 
@@ -72,13 +80,13 @@ class likesDao extends Conexao {
 
         return $lista;
 	}
-	
+
 	function verificar_clicado($id_post, $id_user){
 		$resultado = $this->query("SELECT like_id FROM message_like
 									WHERE id_fk = ? AND msg_id_fk = ?");
 		return($resultado >= 1) ? true : false;
 	}
-	
+
 	function adicionar_click($id_post, $id_user){
 		$comando = $this->prepare("UPDATE posts SET likes+1 WHERE id_post = ?");
 		if($comando){
@@ -90,12 +98,12 @@ class likesDao extends Conexao {
 			}
 			}
 		}
-	
+
 	function retornar_likes($id_post){
 		$resultado = $this->query("SELECT likes FROM posts WHERE id_post = ?");
 		$fetch_likes = $resultado;
 		return $fetch_likes->likes;
 	}
-	
+
 	}
 ?>
