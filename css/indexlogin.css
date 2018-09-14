@@ -12,13 +12,24 @@ body {
 			background-color: #9370DB;
 			
 		}
-		h1{
+
+			h1{
 			color: #FFFFFF;
 			display: block;
 			margin: auto;
 			width: 90%;
 			text-align: center;
 			padding-top: 10vh;
+			padding-bottom: 10vh;
+}
+
+		h2{
+			color: #FFFFFF;
+			display: block;
+			margin: auto;
+			width: 100%;
+			text-align: center;
+			padding-top: 0vh;
 			padding-bottom: 10vh;
 		}
 		
@@ -120,6 +131,19 @@ form input.field:focus{
 	
 	
 }
+<<<<<<< HEAD
+=======
+/*#credits{
+	display: block;
+	text-align: center;	
+	margin: auto;
+	width: 90%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #FFF;
+	font-size: 10pt;	
+}*/
+>>>>>>> origin/master
 
 
 #loading {
@@ -149,12 +173,23 @@ main {
     min-height:         calc(100vh - 100px);
 }
 
+<<<<<<< HEAD
 footer {
 	display: block;
   	min-height: 100px;
   	width: 100%;
 	margin-top: 300px;
 	text-align: center;
+=======
+#footer {
+	margin: auto;
+	width: 100%;
+	bottom: 0;
+	position: fixed;
+	text-align: center;
+	color: #FFF;
+	font-size: 10pt;
+>>>>>>> origin/master
 }
 
 #publicar{
@@ -182,7 +217,11 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
+<<<<<<< HEAD
     background-color: #7531c5;
+=======
+    background-color: #7604bf;
+>>>>>>> origin/master
 }
 
 li.dropdown {
@@ -220,6 +259,7 @@ li.dropdown {
 	border-radius: 50%;
 }
 
+<<<<<<< HEAD
 form #textoresposta{
 	margin-left: 30%;
 	display: block;
@@ -233,4 +273,19 @@ form #textoresposta{
 	display: relative;
 	align-content: center;
 	text-align: center;
+=======
+#textoresposta {
+	resize: none;
+	display: block;
+  	box-sizing: padding-box;
+  	overflow: hidden;
+  	padding: 10px;
+  	width: 250px;
+  	font-size: 14px;
+  	margin: 50px auto;
+  	border-radius: 6px;
+  	box-shadow: 2px 2px 8px rgba(black, .3);
+  	border: 0;
+	
+>>>>>>> origin/master
 }

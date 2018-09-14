@@ -1,33 +1,35 @@
-<?php 
-	include("inc/topo.php");
+<?php
+include("inc/topo.php");
 
-	//daos usadas
-	include("processos/dao.post.php");
-	include("processos/dao.messagelike.php");
-	$postDAO = new PostDAO();
-	$postslista = $postDAO->ListarPost();
-	$comentariolista = $postDAO->ListarComentario();
+//daos usadas
+include("processos/dao.post.php");
+include("processos/dao.likes.php");
+$postDAO = new PostDAO();
+$postslista = $postDAO->ListarPost();
+$comentariolista = $postDAO->ListarComentario();
+$likeDao = new likesDao();
+$likelista = $likeDao->ListarLike();
 
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
     //Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
-    var wordLimit = 50;
+    var wordLimit = 25;
 
-    $(function() {
+    $(function () {
 
         //trata o conteúdo na inicialização da página
-        $('p#texto').each(function() {
+        $('p#texto').each(function () {
             var post = $(this);
             var text = post.text();
             //encontra palavra limite
             var re = /[\s]+/gm,
                 results = null,
                 count = 0;
-            while ((results = re.exec(text)) !== null && ++count < wordLimit) {}
+            while ((results = re.exec(text)) !== null && ++count < wordLimit) { }
             //resume o texto e coloca o link
             if (results !== null && count >= wordLimit) {
                 var summary = text.substring(0, re.lastIndex - results[0].length);
@@ -39,7 +41,7 @@
         });
 
         //ao clicar num link "Leia mais", mostra o conteúdo original
-        $('.read-more').on('click', function() {
+        $('.read-more').on('click', function () {
             var post = $(this).closest('p#texto');
             var text = post.data('original-text');
             post.text(text);
@@ -49,197 +51,147 @@
 
     });
 
-    //Function para incrementar o sistema de Likes
-    /*$(function() {
-    $('.like').on('click', function() {
-        $(this).next('.likes').find('span').text(function() {
-            if (parseInt($(this).text()) === 0) {
-                return parseInt($(this).text() + 1);
-            }
-            else {
-                return 0;
-            }
-        });
-    });
-});*/
-
-    //JavaScript para o sistema de Likes
-    $('.like').on("click", function() {
-        var ID = $(this).attr("id");
-        var sid = ID.split("like");
-        var New_ID = sid[1];
-        var REL = $(this).attr("rel");
-        var URL = 'dao.messagelike.php';
-        var dataString = 'id_post=' + New_ID + '&rel=' + REL;
-        $.ajax({
-            type: "POST",
-            url: URL,
-            data: dataString,
-            cache: false,
-            success: function(html) {
-
-                if (REL == 'Like') {
-                    $("#youlike" + New_ID).slideDown('slow').prepend("<span id='you" + New_ID + "'><a href='#'>You</a> like this.</span>.");
-                    $("#likes" + New_ID).prepend("<span id='you" + New_ID + "'><a href='#'>You</a>, </span>");
-                    $('#' + ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
-                } else {
-                    $("#youlike" + New_ID).slideUp('slow');
-                    $("#you" + New_ID).remove();
-                    $('#' + ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
-                }
-
-            }
-        })
+	
+		/*JS para o auto-resize da textarea*/
+			$(document)
+    .one('focus.autoExpand', 'textarea.autoExpand', function(){
+        var savedValue = this.value;
+        this.value = '';
+        this.baseScrollHeight = this.scrollHeight;
+        this.value = savedValue;
+    })
+    .on('input.autoExpand', 'textarea.autoExpand', function(){
+        var minRows = this.getAttribute('data-min-rows')|0, rows;
+        this.rows = minRows;
+        rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
+        this.rows = minRows + rows;
     });
 </script>
 
 
-<?php
 
-	$dao = new LikesDAO();
-	$resultado = $dao->query();
-
-	foreach($resultado as $row)
-		{
-		$msg_id=$row['id_post'];
-		$message=$row['texto'];
-		$like_count = $row["like_count"];
-		$username=$_SESSION["usuario.nome"];
-		$uid=$_SESSION["usuario"];
-		}
-	?>
-
-<?php
-
-$dao = new LikesDAO();
-$resultado = $dao->queryAll();
-
-	foreach($resultado as $row){
-	$like_count = $row["like_count"];
-	}
-
-if($like_count>0)
-{$resultado=$dao->detailsWhoLiked($msg);
-?>
-<div class='likeUsers' id="likes<?php echo $msg_id ?>">
-    <?php
-$new_like_count=$like_count-3;
-foreach($resultado as $row)  
-{
-	$like_uid=$row['id'];
-	$likeusername=$row['nome'];
-	if($like_uid==$uid)
-	{
-	echo '<span id="you'.$msg_id.'"><a href="'.$likeusername.'">You</a>,</span>';
-	}
-	else
-	{
-	echo '<a href="'.$likeusername.'">'.$likeusername.'</a>';
-	} 
-}
-echo 'and '.$new_like_count.' other friends like this';
-?>
-</div>
-<?php }
-else {
-echo '<div class="likeUsers" id="elikes'.$msg_id.'"></div>';
-} ?>
 
 <div id="post">
-    <?php 
-		foreach($postslista as $post){
-	?>
+    <?php
+    foreach($postslista as $post){?>
+    
     <div class="commentPerfil">
         <div class="conteudoPost">
             <div id="perguntaFeed">
-                <h3 id="perguntatexto">"
-                    <?=$post["perg"];?>"</h3>
+                <h3 id="perguntatexto">
+                    "
+                    <?=$post["perg"];?>"
+                </h3>
             </div>
-            <?php if($post["usuariofoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i>
+            <?php if($post["usuariofoto"] == null){?>
+            <i class="fa fa-id-badge" style="font-size:48px"></i>
             <?php
-										}else{?>
-            <img id="campoFotoFeed" src="fotos/perfil/<?=$post[" usuariofoto"]?>"/>
+                  }else{?>
+            <img id="campoFotoFeed" src="fotos/perfil/<?=$post["usuariofoto"]?>" />
             <?php }?>
 
 
-            <p id="user"><b>
-                    <?=$post["nome"];?></br></p>
+            <p id="user">
+                <b>
+                    <?=$post["nome"];?>
+                    <br />
+            </p>
             <span id="dataPost">
-                <?=$post["data"];?></span>
+                <?=$post["data"];?>
+            </span>
             <!--Div do comentário com o botão de Likes-->
             <div>
-                <ul>
-                    <li>
-                        <p id="texto">
-                            <?=$post["texto"];?>
-                        </p>
-                        <button class="like">Concordo</button>
-                        <span class="likes"><span>0</span> curtidas</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!--Sistema de likes-->
-            <div>
-                <?php
-			
-$dao = new LikesDAO();
-$like = $dao->detectID($idfk, $msgidfk);
-			
-if($like!=null)
-{
-echo '<a href="#" class="like" id="like'.$msg_id.'" title="Unlike" rel="Unlike">Unlike</a>';
- }
-else
-{
-echo '<a href="#" class="like" id="like'.$msg_id.'" title="Like" rel="Like">Like</a>';
-} ?>
-            </div>
-
-
-            <!--Utilizado CDN Font Awesome para aplicar icone-->
-            <button style="font-size:14px" id="abre_comentario" onClick="$('#<?=$post[" id_post"];?>').fadeToggle();">Exibir Comentários
+               
+                    <ul>
+                        <li>
+                            <p id="texto">                                
+                                <?=$post["texto"];?>
+                            </p>
+                            
+							<!--Form action e Method devem ficar vazios pois ja estáo especificados no Ajax-->
+                            <form action="likes.php" method="POST" id="envia_like"> 
+							<?php foreach($likelista as $like){
+                            if($like["msg_id_fk"] == $post["id_post"]){
+                                //aqui é onde tem que contar os likes
+                                $curtidas = count($like["like_id"]); ?>
+                            <span class="likes">
+                                <span><?=$curtidas;?></span> 
+                            </span> 
+                            <?php }}?>
+                            <button name="likeup" style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>  
+                                <?php foreach ($likelista as $like){
+                                          if($like["msg_id_fk"] == $post["id_post"]){?>
+                                <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
+                                <input type="hidden" id="likeid" name="likeid" value="<?=$like["like_id"]?>" />
+                                <input type="hidden" id="userfk" name="userfk" value="<?=$like["id_fk"]?>" />
+                                <?php }
+                                else{?>
+                            <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>" />   
+                                <?php }} ?>
+                            
+                            <input type="hidden" id="post" name="post" value="<?=$post["id_post"]?>"/>
+                            <input type="hidden" id="userid" name="userid" value="<?=$_SESSION["usuario"]?>"/>
+							</form>
+                            
+			<!--Utilizado CDN Font Awesome para aplicar icone-->
+            <button style="font-size:14px" id="abre_comentario" onclick="$('#<?=$post["id_post"];?>').fadeToggle();">
+                Exibir Comentários
             </button>
-        </div>
+                            
+                        </li>
+                    </ul>
+                
+            </div>
+		</div>
 
 
         <!-- Div dos comentarios -->
-        <div hidden="" id="<?=$post[" id_post"];?>" name="divComentar">
+        <div hidden="" id="<?=$post["id_post"];?>" name="divComentar">
 
             <form action="post_grava.php" method="post" id="comentar">
-                <input type="hidden" name="id_comentario" value="<?=$post[" id_post"]?>"/>
-                <textarea name="textocomentario" id="textocomentario" placeholder="digite seu comentario"></textarea>
-                <input type="submit" name="btncomentar" value="Comentar" /><br />
+                <input type="hidden" name="id_comentario" value="<?=$post["id_post"]?>" />
+                <textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="digite seu comentario" name="textocomentario"></textarea>
+                <input type="submit" name="btncomentar" value="Comentar"/>
+                <br />
             </form>
             <?php
-			
-			foreach($comentariolista as $coment){
+
+        foreach($comentariolista as $coment){
 			if($coment["id_post"] == $post["id_post"]){?>
 
             <section class="comentariosPost">
-                <?php if($coment["userfoto"] == null){?><i class="fa fa-id-badge" style="font-size:48px"></i>
+                <?php if($coment["userfoto"] == null){?>
+                <i class="fa fa-id-badge" style="font-size:48px"></i>
                 <?php
-										}else{?>
-                <img id="campoFotoFeed" src="fotos/perfil/<?=$coment[" userfoto"]?>"/>
+                      }else{?>
+                <img id="campoFotoFeed" src="fotos/perfil/<?=$coment["userfoto"]?>" />
                 <?php }?>
-                <p id="usercoment"><b>
-                        <?=$coment["nome_usuario"]?></b></p>
+                <p id="usercoment">
+                    <b>
+                        <?=$coment["nome_usuario"]?>
+                    </b>
+                </p>
                 <span id="dataPost">
-                    <?=$coment["data"]?><br /></span>
+                    <?=$coment["data"]?>
+                    <br />
+                </span>
                 <span id="textocoment">
-                    <?=$coment["textocomentario"]?></span>
+                    <?=$coment["textocomentario"]?>
+                </span>
 
             </section>
-            <?php }} ?>
+            <?php }
+        } ?>
 
         </div>
     </div>
 
-    <?php } ?>
+    <?php }
+    ?>
 </div>
 
 
 
 <?php
-	include("inc/rodape.php");
+include("inc/rodape.php");
 ?>

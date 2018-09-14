@@ -72,7 +72,6 @@ p#texto {
 	max-height:300px;
 	margin-top: 5px;
 	margin-bottom:5px;	
-	background-color: #9370DB;
 	border-radius: 4px;
 }
 
@@ -103,11 +102,33 @@ main {
 }
 
 #footer {
-	display: block;
-  	min-height: 100px;
-  	width: 100%;
+	margin: auto;
+	width: 100%;
+	bottom: 0;
+	
+	text-align: center;
+	color: #FFF;
+	font-size: 10pt;
 }
 
 .click {
   cursor: pointer;
+}
+
+.autoExpand {
+	resize: none;
+	display: block;
+  	box-sizing: padding-box;
+  	overflow: hidden;
+  	padding: 10px;
+  	width: 250px;
+  	font-size: 14px;
+  	margin: auto;
+  	border-radius: 6px;
+  	box-shadow: 2px 2px 8px rgba(black, .3);
+  	border: 0;
+}
+
+ul {
+	list-style-type: none;
 }

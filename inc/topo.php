@@ -12,9 +12,12 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 ?>
 
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="utf-8">
+	
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/navbar.css" /> -->
 	<link rel="stylesheet" type="text/css" href="../css/menulateral.css"/>
@@ -37,9 +40,9 @@ $buscarEmail = $usuariosDAO->BuscarEmail($_SESSION["usuario.email"]);
 			<?php
 				date_default_timezone_set("America/Sao_Paulo"); //Lista em: http://www.php.net/manual/pt_BR/timezones.php
 				$hora = date("G");
-				if ($hora >= 6 && $hora < 12) echo "body, .lateral {background-color:rgb(61,103, 255);}"; //Dia
-				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral {background-color:rgb(237, 122, 17);}"; //Tarde
-				else echo "body, .lateral {background-color:rgb(147,112,219);}"; //Noite
+				if ($hora >= 6 && $hora < 12) echo "body, .lateral, .comentariosPost {background-color:rgb(61,103, 255);}"; //Dia
+				elseif ($hora >= 12 && $hora < 19) echo "body, .lateral, .comentariosPost {background-color:rgb(237, 122, 17);}"; //Tarde
+				else echo "body, .lateral, .comentariosPost {background-color:rgb(147,112,219);}"; //Noite
 			?>
 		</style>
 	
@@ -74,7 +77,6 @@ Removi a foto de fundo da barra lateral por estetica mesmo, dependo da foto da p
 			</div>
 				</div>
 			
-			<li><a href="paginainicial.php">Inicio</a></li>
 			<li><a href="feed.php">Feed</a></li>
 			<li><a href="noticias.php">Noticias</a></li></lo>
 			<li><a href="logout.php">Sair</a></li>
