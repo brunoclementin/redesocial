@@ -51,48 +51,6 @@ $likelista = $likeDao->ListarLike();
 
     });
 
-    //Function para incrementar o sistema de Likes
-    /*$(function() {
-    $('.like').on('click', function() {
-        $(this).next('.likes').find('span').text(function() {
-            if (parseInt($(this).text()) === 0) {
-                return parseInt($(this).text() + 1);
-            }
-            else {
-                return 0;
-            }
-        });
-    });
-});*/
-
-    ////JavaScript para o sistema de Likes
-    //$('.like').on("click", function () {
-    //    var ID = $(this).attr("id");
-    //    var sid = ID.split("like");
-    //    var New_ID = sid[1];
-    //    var REL = $(this).attr("rel");
-    //    var URL = 'dao.messagelike.php';
-    //    var dataString = 'id_post=' + New_ID + '&rel=' + REL;
-    //    $.ajax({
-    //        type: "POST",
-    //        url: URL,
-    //        data: dataString,
-    //        cache: false,
-    //        success: function (html) {
-
-    //            if (REL == 'Like') {
-    //                $("#youlike" + New_ID).slideDown('slow').prepend("<span id='you" + New_ID + "'><a href='#'>You</a> like this.</span>.");
-    //                $("#likes" + New_ID).prepend("<span id='you" + New_ID + "'><a href='#'>You</a>, </span>");
-    //                $('#' + ID).html('Unlike').attr('rel', 'Unlike').attr('title', 'Unlike');
-    //            } else {
-    //                $("#youlike" + New_ID).slideUp('slow');
-    //                $("#you" + New_ID).remove();
-    //                $('#' + ID).attr('rel', 'Like').attr('title', 'Like').html('Like');
-    //            }
-
-    //        }
-    //    })
-    //});
 	
 		/*JS para o auto-resize da textarea*/
 			$(document)
@@ -108,26 +66,6 @@ $likelista = $likeDao->ListarLike();
         rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
         this.rows = minRows + rows;
     });
-	
-	
-	/*Ajax para like em tempo real, ainda em testes*/
-	$(document).ready(function(){
-    $('#ajax').submit(function(){
-        var dados = $( this ).serialize();
-
-        $.ajax({
-            type: "POST",
-            url: "likes.php",
-            data: dados,
-            success: function( data )
-            {
-                alert( data );
-            }
-        });
-
-        return false;
-    });
-});
 </script>
 
 
@@ -171,7 +109,7 @@ $likelista = $likeDao->ListarLike();
                             </p>
                             
 							<!--Form action e Method devem ficar vazios pois ja estáo especificados no Ajax-->
-                            <form action="" method="" id="ajax"> 
+                            <form action="likes.php" method="POST" id="envia_like"> 
                             <button name="likeup" class="like">Concordo</button>  
                                 <?php foreach ($likelista as $like){
                                           if($like["msg_id_fk"] == $post["id_post"]){?>
