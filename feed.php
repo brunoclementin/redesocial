@@ -12,12 +12,12 @@ $likelista = $likeDao->ListarLike();
 
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/feed.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
     //Aqui é uma solução para textos longos, com um leia mais, não achei algo mais simples que funciona-se dessa forma, por enquanto vamos usando esse.
-    var wordLimit = 50;
+    var wordLimit = 25;
 
     $(function () {
 
@@ -110,7 +110,15 @@ $likelista = $likeDao->ListarLike();
                             
 							<!--Form action e Method devem ficar vazios pois ja estáo especificados no Ajax-->
                             <form action="likes.php" method="POST" id="envia_like"> 
-                            <button name="likeup" class="like">Concordo</button>  
+							<?php foreach($likelista as $like){
+                            if($like["msg_id_fk"] == $post["id_post"]){
+                                //aqui é onde tem que contar os likes
+                                $curtidas = count($like["like_id"]); ?>
+                            <span class="likes">
+                                <span><?=$curtidas;?></span> 
+                            </span> 
+                            <?php }}?>
+                            <button name="likeup" style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>  
                                 <?php foreach ($likelista as $like){
                                           if($like["msg_id_fk"] == $post["id_post"]){?>
                                 <input type="hidden" id="contador" name="contador" value="<?=$like["created"]?>"/>
@@ -123,31 +131,18 @@ $likelista = $likeDao->ListarLike();
                             
                             <input type="hidden" id="post" name="post" value="<?=$post["id_post"]?>"/>
                             <input type="hidden" id="userid" name="userid" value="<?=$_SESSION["usuario"]?>"/>
-                            </form>
-                            <?php foreach($likelista as $like){
-                            if($like["msg_id_fk"] == $post["id_post"]){
-                                //aqui é onde tem que contar os likes
-                                $curtidas = count($like["like_id"]); ?>
-                            <span class="likes">
-                                <span><?=$curtidas;?></span> curtidas
-                            </span> 
-                            <?php }}?>
+							</form>
                             
+			<!--Utilizado CDN Font Awesome para aplicar icone-->
+            <button style="font-size:14px" id="abre_comentario" onclick="$('#<?=$post["id_post"];?>').fadeToggle();">
+                Exibir Comentários
+            </button>
                             
                         </li>
                     </ul>
                 
             </div>
-
-
-           
-
-
-            <!--Utilizado CDN Font Awesome para aplicar icone-->
-            <button style="font-size:14px" id="abre_comentario" onclick="$('#<?=$post["id_post"];?>').fadeToggle();">
-                Exibir Comentários
-            </button>
-        </div>
+		</div>
 
 
         <!-- Div dos comentarios -->

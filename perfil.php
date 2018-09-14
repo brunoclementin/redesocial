@@ -80,7 +80,7 @@ $usuariolista = $usuarioDAO->listarUsuario();
 						<p id="texto"><?=$post["texto"];?></p>
 	
 					<!--Utilizado CDN Font Awesome para aplicar icone-->	
-						<button style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>
+						<button name="likeup" style="font-size:14px"><i class="fa fa-hand-peace-o"></i></button>
 						<button style="font-size:14px" id="abre_comentario" 
 								onClick="$('#<?=$post["id_post"];?>').fadeToggle();">Exibir Comentários 
 						</button>
