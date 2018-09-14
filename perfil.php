@@ -45,7 +45,7 @@ $usuariolista = $usuarioDAO->listarUsuario();
 			<div hidden="" class="infoUsu">				
 					<form id="descricaoUsuarioForm" action="usuario_grava.php" method="post">
 						<p id="nomeUsuario"><?=$_SESSION["usuario.nome"]?></p>
-						<p id="descicaoUsuario">Eu sou bruno, tenho 24 anos, estudo programação e gosto muito de musica</p>						
+						<p id="descricaoUsuario">Newton Hidenori Ishii - Japonês da Federal.</p>						
 					</form>			
 				
 					<form class="formInputFotoPerfil" action="usuario_grava.php" method="post" enctype="multipart/form-data">			
