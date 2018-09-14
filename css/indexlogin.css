@@ -261,7 +261,7 @@ form #textoresposta{
 	text-align: center;
 }
 
-#textoresposta {
+.autoExpand {
 	resize: none;
 	display: block;
   	box-sizing: padding-box;
@@ -272,5 +272,5 @@ form #textoresposta{
   	margin: 50px auto;
   	border-radius: 6px;
   	box-shadow: 2px 2px 8px rgba(black, .3);
-  	border: 0;
+	border: 0;
 }

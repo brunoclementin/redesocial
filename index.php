@@ -28,10 +28,6 @@
 	
 <title>Freedom Mouth</title>
 	
-	<script>
-	
-	</script>
-	
 </head>
 
 <body>
@@ -121,7 +117,7 @@
 	<div id="posts">	
 		<form action="post_grava.php" method="post" id="publicar">
 			<input type="hidden" name="idpergunta" value="<?=$pergunta["id_per"];?>"/>
-			<textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="O que você pensa sobre isso?" id="textoresposta" name="textoresposta"
+			<textarea class='autoExpand' rows="1" data-min-rows='1' placeholder="O que você pensa sobre isso?" name="textoresposta"
 				<?php	  if(!isset($_SESSION["usuario"]) || !isset($_SESSION["usuario.nome"])) 
 				{ ?>
 				onClick="$('#login').fadeIn(); $('#publicar').hide();" <?php } ?>></textarea> 
