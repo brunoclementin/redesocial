@@ -92,10 +92,16 @@
 													}else{?>								
 							<img id="fotoPerfil" src="fotos/perfil/<?=$buscarEmail["foto"]?>"/><?php }?>
 							</a>
+							
+							<?php
+							if(isset($_SESSION["usuario"]) || isset($_SESSION["usuario.nome"])) {
+							?>
 							<div class="dropdown-content">
 							  <a href="perfil.php"><?=$buscarEmail["nome"]?></a>
 							  <a href="logout.php">Sair</a>
 							</div>
+							<?php } else { NULL;} ?>
+							
 						</li>
 						
 					</div>
